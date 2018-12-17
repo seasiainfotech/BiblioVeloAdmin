@@ -1,0 +1,150 @@
+﻿@model BiblioVelo.Services.Models.EquipmentDetailEntity
+@{
+    ViewBag.Title = "ManageEquipment";
+}
+<h2 style="width: 80%;">Manage Post</h2>
+@*@using (Html.BeginForm("ManageEquipment", "Equipment", FormMethod.Get))
+{*@
+    <div class="filter-left mwidth">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+    </div>
+@*}*@
+<div class="content-grid">
+    @if (Model != null)
+    {
+        if (Model.lstEquipment != null)
+        {
+            var grid = new WebGrid(canPage: true, canSort: true, rowsPerPage: ViewBag.PageSize);
+            grid.Pager(WebGridPagerModes.Numeric);
+            grid.Bind(@Model.lstEquipment,
+            autoSortAndPage: false,
+            rowCount: @Model.Total);
+            @grid.GetHtml(htmlAttributes: new { id = "tblTestimonial", width = "100%", cellspacing = "0", cellpadding = "0", border = "0" },
+            fillEmptyRows: false,
+            headerStyle: "HeaderColor",
+            tableStyle: "",
+            rowStyle: "",
+            footerStyle: "footerGooter",
+            columns: grid.Columns(
+            grid.Column("Name", "Name"),
+            grid.Column("Model", "Model"),
+             grid.Column("Size", "Size"),
+              grid.Column("Price", "Price"),
+              grid.Column(header: "Action", format: @<text>
+                @if (item.IsBlock == true)
+                {
+                    @Html.ActionLink("Unblock", "Block", new { pagesize=ViewBag.PageSize,equipmentId = item.Id, status = false })
+                }
+                else
+                {
+                    @Html.ActionLink("Block", "Block", new { pagesize = ViewBag.PageSize, equipmentId = item.Id, status = true })
+                }
+            </text>)
+
+      ))
+        }
+        else
+        {
+            <div class="grid">
+                <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Model</th>
+                            <th>Size</th>
+                            <th>Price</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" align="center" style="text-align:center;">No record found </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br /><br /><br />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="grid">
+            <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Model</th>
+                        <th>Size</th>
+                        <th>Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4" align="center" style="text-align:center;">No record found </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br /><br /><br /><br />
+        </div>
+    }
+    <div style="padding: 20px 0 0 0;float: right;">
+        <span>Page Size:</span>
+        @Html.DropDownListFor(x => x.PageSize, new List<SelectListItem>
+               {
+                            new SelectListItem() { Text = "5", Value = "5"},
+                            new SelectListItem() { Text = "10", Value = "10"},
+                            new SelectListItem() { Text = "25", Value = "25"},
+                            new SelectListItem() { Text = "50", Value = "50"},
+                            new SelectListItem() { Text = "100", Value = "100"}
+        })
+    </div>
+</div>
+
+<script>
+    $('#ulAdminMenu li').removeClass('selected');
+    $("#lstEquipment").addClass('selected');
+
+    $('#PageSize').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("ManageEquipment", "Equipment")' + '?' + 'PageSize=' + value;
+    });
+    $('#SearchString').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("ManageEquipment", "Equipment")' + '?' + 'SearchString=' + value +'&'+'PageSize='+@ViewBag.PageSize;
+    });
+    SearchString
+
+    if ('@ViewBag.Message' == "BlockSuccess") {
+        swal({
+            title: 'Success',
+            text: 'Post blocked successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.href = '@Url.Action("ManageEquipment", "Equipment")' + '?' + 'PageSize=' +@ViewBag.PageSize;
+    });
+
+    }
+    if ('@ViewBag.Message' == "UnBlockSuccess") {
+        swal({
+            title: 'Success',
+            text: 'Post unblocked successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.href = '@Url.Action("ManageEquipment", "Equipment")' + '?' + 'PageSize=' +@ViewBag.PageSize;
+    });
+    }
+
+    if ('@ViewBag.Message' == "Booked") {
+
+        swal({
+                title: 'Error',
+                text: 'This equipment is booked, cannot be Blocked',
+                type: 'error'
+            },
+            function () {
+                window.location.href = '@Url.Action("ManageEquipment", "Equipment")' + '?' + 'PageSize=' +@ViewBag.PageSize;
+            });
+
+    }
+</script>

@@ -1,0 +1,136 @@
+﻿@model BiblioVelo.Services.Models.ReportedReviewsEntity
+@{
+    ViewBag.Title = "ManageReviews";
+}
+<h2 style="width: 80%;">Manage Reported Reviews</h2>
+@using (Html.BeginForm("ManageReviews", "Reports", FormMethod.Get))
+{
+    <div class="filter-left mwidth">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+    </div>
+}
+<div class="content-grid">
+    @if (Model != null)
+    {
+        if (Model.lstReviews != null)
+        {
+            var grid = new WebGrid(canPage: true, canSort: true, rowsPerPage: ViewBag.PageSize);
+            grid.Pager(WebGridPagerModes.Numeric);
+            grid.Bind(@Model.lstReviews,
+            autoSortAndPage: false,
+            rowCount: @Model.Total);
+            @grid.GetHtml(htmlAttributes: new { id = "tblTestimonial", width = "100%", cellspacing = "0", cellpadding = "0", border = "0" },
+            fillEmptyRows: false,
+            headerStyle: "HeaderColor",
+            tableStyle: "",
+            rowStyle: "",
+            footerStyle: "footerGooter",
+            columns: grid.Columns(
+            grid.Column("RatedBy", "Review By"),
+            grid.Column("RatedTo", "Review For"),
+            grid.Column("Review", "Review"),
+             grid.Column("ReportedBy", "Reported By"),
+           
+            grid.Column("Reason", "Reason of Report"),
+              grid.Column(header: "Action", format: @<text>
+    
+                @Html.ActionLink("Delete Review", "DeleteConfirmed", new { id = item.Id }, new { onclick = "return confirm('Are sure you wants to delete?');" })
+            </text>)
+
+      ))
+        }
+        else
+        {
+            <div class="grid">
+                <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                    <thead>
+                        <tr>
+                            <th>Review By</th>
+                            <th>Review For</th>
+                            <th>Review</th>
+                            <th>Reported By</th>
+                            <th>Reason of Report</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" align="center" style="text-align:center;">No record found </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br /><br /><br />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="grid">
+            <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                <thead>
+                    <tr>
+                        <th>Review By</th>
+                        <th>Review For</th>
+                        <th>Review</th>
+                        <th>Reported By</th>
+                        <th>Reason of Report</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" align="center" style="text-align:center;">No record found </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br /><br /><br /><br />
+        </div>
+    }
+    <div style="padding: 20px 0 0 0;float: right;">
+        <span>Page Size:</span>
+        @Html.DropDownListFor(x => x.PageSize, new List<SelectListItem>
+               {
+                            new SelectListItem() { Text = "5", Value = "5"},
+                            new SelectListItem() { Text = "10", Value = "10"},
+                            new SelectListItem() { Text = "25", Value = "25"},
+                            new SelectListItem() { Text = "50", Value = "50"},
+                            new SelectListItem() { Text = "100", Value = "100"}
+        })
+    </div>
+</div>
+
+<script>
+    $('#ulAdminMenu li').removeClass('selected');
+    $("#lstUsers").addClass('selected');
+
+    $('#PageSize').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("ManageReviews", "Reports")' + '?' + 'PageSize=' + value;
+    });
+
+
+    if ('@ViewBag.Message' == "Deleted") {
+        swal({
+            title: 'Deleted',
+            text: 'Review Deleted Successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.href = '@Url.Action("ManageReviews", "Reports")';
+    });
+    }
+
+
+
+    if ('@ViewBag.Message' == "Something went wrong") {
+        swal({
+            title: 'Error',
+            text: 'Something went wrong',
+            type: 'error'
+        },
+    function () {
+        window.location.href = '@Url.Action("ManageReviews", "Reports")';
+    });
+    }
+
+</script>
+
+

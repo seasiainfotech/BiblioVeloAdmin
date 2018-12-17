@@ -1,0 +1,137 @@
+﻿@model BiblioVelo.Services.Models.UserDetailEntity
+@{
+    ViewBag.Title = "ManageUser";
+}
+<h2 style="width: 80%;">Manage Users</h2>
+@*@using (Html.BeginForm("ManageUser", "User", FormMethod.Get))
+{*@
+    <div class="filter-left mwidth">
+        @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+    </div>
+@*}*@
+<div class="content-grid">
+    @if (Model != null)
+    {
+        if (Model.lstUser != null)
+        {
+            var grid = new WebGrid(canPage: true, canSort: true, rowsPerPage: ViewBag.PageSize);
+            grid.Pager(WebGridPagerModes.Numeric);
+            grid.Bind(@Model.lstUser,
+            autoSortAndPage: false,
+            rowCount: @Model.Total);
+            @grid.GetHtml(htmlAttributes: new { id = "tblTestimonial", width = "100%", cellspacing = "0", cellpadding = "0", border = "0" },
+            fillEmptyRows: false,
+            headerStyle: "HeaderColor",
+            tableStyle: "",
+            rowStyle: "",
+            footerStyle: "footerGooter",
+            columns: grid.Columns(
+            grid.Column("Name", "Name"),
+            grid.Column("Email", "Email"),
+            grid.Column("PhoneNumber", "Phone Number"),
+            grid.Column("Address", "Address"),
+              grid.Column(header: "Action", format: @<text>
+                @if (item.IsActive == 1)
+                {
+                    @Html.ActionLink("Deactive", "Active", new { pagesize = ViewBag.PageSize, UserId = item.Id, Active = 0 })
+                }
+                else
+                {
+                    @Html.ActionLink("Active", "Active", new { pagesize = ViewBag.PageSize, UserId = item.Id, Active = 1 })
+                }
+            </text>)
+
+      ))
+        }
+        else
+        {
+            <div class="grid">
+                <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Email</th>
+                            <th>PhoneNumber</th>
+                            <th>Address</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" align="center" style="text-align:center;">No record found </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br /><br /><br />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="grid">
+            <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Email</th>
+                        <th>PhoneNumber</th>
+                        <th>Address</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4" align="center" style="text-align:center;">No record found </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br /><br /><br /><br />
+        </div>
+    }
+    <div style="padding: 20px 0 0 0;float: right;">
+        <span>Page Size:</span>
+        @Html.DropDownListFor(x => x.PageSize, new List<SelectListItem>
+               {
+                            new SelectListItem() { Text = "5", Value = "5"},
+                            new SelectListItem() { Text = "10", Value = "10"},
+                            new SelectListItem() { Text = "25", Value = "25"},
+                            new SelectListItem() { Text = "50", Value = "50"},
+                            new SelectListItem() { Text = "100", Value = "100"}
+        })
+    </div>
+</div>
+
+<script>
+    $('#ulAdminMenu li').removeClass('selected');
+    $("#lstUsers").addClass('selected');
+
+    $('#PageSize').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("ManageUser", "User")' + '?' + 'PageSize=' + value;
+    });
+
+    $('#SearchString').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("ManageUser", "User")' + '?' + 'SearchString=' + value +'&'+'PageSize='+@ViewBag.PageSize;
+    });
+
+    if ('@ViewBag.Message' == "ActiveSuccess") {
+        swal({
+            title: 'Success',
+            text: 'Your account activated successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.href = '@Url.Action("ManageUser", "User")';
+    });
+
+    }
+    if ('@ViewBag.Message' == "DeactiveSuccess") {
+        swal({
+            title: 'Success',
+            text: 'Your account deactivated successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.href = '@Url.Action("ManageUser", "User")';
+    });
+    }
+</script>

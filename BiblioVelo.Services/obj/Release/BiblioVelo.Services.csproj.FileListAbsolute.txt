@@ -1,0 +1,6 @@
+D:\Projects\BiblioVelo\BiblioVelo.Services\bin\Release\BiblioVelo.Services.dll
+D:\Projects\BiblioVelo\BiblioVelo.Services\bin\Release\BiblioVelo.Services.pdb
+D:\Projects\BiblioVelo\BiblioVelo.Services\obj\Release\BiblioVelo.Services.dll
+D:\Projects\BiblioVelo\BiblioVelo.Services\obj\Release\BiblioVelo.Services.pdb
+D:\Projects\BiblioVelo\BiblioVelo.Services\bin\Release\Newtonsoft.Json.dll
+D:\Projects\BiblioVelo\BiblioVelo.Services\bin\Release\Newtonsoft.Json.xml

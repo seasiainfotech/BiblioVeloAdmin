@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")*@
+    @Scripts.Render("~/bundles/modernizr")
+    <link rel="shortcut icon" type="image/png" href="~/Images/favicon.ico" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <link href="~/Content/Developer.css" rel="stylesheet" />
+    <link href="~/Content/sweetalert.css" rel="stylesheet" />
+    <link href="~/Content/pstyle.css" rel="stylesheet" />
+    <link href="~/Content/font-awesome.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/css")
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/jquery.paginate.js"></script>
+    <style>
+        .selected {
+            background: #dddddd none repeat scroll 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <div class="header">
+            <div class="header-inner">
+                <div class="inner-logo">
+                    <a href="javascript:;"><img src="http://stgsd.appsndevs.com/BiblioVeloApiUAT/logo/AppLogo2.png" alt="" style="margin-top: 6px;width :110px;" /></a>
+                </div>
+
+
+                <div class="header-right">
+                    <a href='@Url.Content("~/Account/LogOff")' class="inner-hdr-btn" style="background: #f5f1f0;color: black">LOGOUT</a>
+                    <p style="    color: #FFF;">Hi, <span>Admin</span></p>
+                </div>
+            </div>
+        </div>
+        <div class="main-content">
+            <div class="left-menu">
+                <ul id="ulAdminMenu">
+                    <li id="lstManageUser"><a href='@Url.Content("~/Admin/User/ManageUser")'><i class="fa fa-user" aria-hidden="true"></i>Manage User</a></li>
+                    <li id="lstEquipment"><a href='@Url.Content("~/Admin/Equipment/ManageEquipment")'><i class="fa fa-clipboard" aria-hidden="true"></i>Manage Post</a></li>
+                    <li id="lstBookings"><a href='@Url.Content("~/Admin/Booking/ManageBooking")'><i class="fa fa-comments-o" aria-hidden="true"></i>Manage Bookings</a></li>
+                    <li id="lstdisputes"><a href='@Url.Content("~/Admin/Disputes/Index")'><i class="fa fa-exclamation-circle" aria-hidden="true"></i>Manage Disputes</a></li>
+                    <li id="lstReports"><a href='@Url.Content("~/Admin/Reports/ManageReviews")'><i class="fa fa-comments-o" aria-hidden="true"></i>Manage Reviews</a></li>
+                    <li id="lstReports"><a href='@Url.Content("~/Admin/ReportsForTheft")'><i class="fa fa-frown-o" aria-hidden="true"></i>Manage Theft Reports</a></li>
+                    <li id="lstReports"><a href='@Url.Content("~/Admin/ClaimsForAccident")'><i class="fa fa-wheelchair " aria-hidden="true"></i>Manage Accidental Claims</a></li>
+                    <li id="lstBiblioVéloFee"><a href='@Url.Content("~/Admin/FeeAdjust/Index")'><i class="fa fa-money" aria-hidden="true"></i>Manage BiblioVélo Fee</a></li>
+                    <li id="lstBiblioVéloFee"><a href='@Url.Content("~/Admin/Security/ManageSecurity")'><i class="fa fa-lock" aria-hidden="true"></i>Manage Security</a></li>
+                    <li id="lstChangePass"><a href='@Url.Content("~/Admin/Account/ChangePassword")'><i class="fa fa-key" aria-hidden="true"></i>Change Password</a></li>
+                
+                    </ul>
+            </div>
+            <div class="right-outer-content">
+                <div class="right-content-main">
+                    @RenderBody()
+                </div>
+            </div>
+        </div>
+    </div>
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

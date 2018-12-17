@@ -1,0 +1,275 @@
+﻿body {
+}
+
+.login-cancelbtn {
+    margin: 0;
+    padding: 10px 30px;
+    color: #fff;
+    font-size: 13px;
+    background: #3a3a3a;
+    border: 0 none;
+    border-radius: 25px;
+}
+
+.upload-btn {
+    background: rgba(0, 0, 0, 0) linear-gradient(to bottom, #ffffff 0%, #d9d9d9 100%) repeat scroll 0 0;
+    border: 1px solid #c7c8c8;
+    color: #333;
+    cursor: pointer;
+    padding: 7px 12px !important;
+    text-transform: uppercase;
+}
+
+.popClass {
+    /*z-index: 9999;*/
+    position: fixed !important;
+    margin: 0 auto;
+    top: 0% !important;
+    left: 0% !important;
+    right: 0;
+}
+
+.form-logo a {
+    cursor: default !important;
+}
+
+.spnstar {
+    color: red;
+}
+
+.linked-login {
+    border: none !important;
+}
+
+.pdngl130 {
+    padding-left: 150px !important;
+}
+
+.selected {
+    background: #dddddd none repeat scroll 0 0;
+}
+
+.inner-logo a {
+    cursor: default;
+}
+
+.wdth33 {
+    width: 53% !important;
+}
+
+
+/*.dvShowImage {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+    min-height: 100px;
+    min-width: 100px;
+    margin-left: 80px;
+            
+        }
+
+ .dvShowImage img {
+     border: 0;
+     display: block;
+     height: 100px;
+     margin-left: 80px;
+            }*/
+
+
+
+
+.content-grid {
+    margin-bottom: 20px !important;
+}
+
+    .content-grid table .tablelink {
+        color: #515151;
+        text-decoration: underline;
+        font-size: 13px;
+        padding-left: 0px;
+        margin-left: 6px;
+    }
+
+.input-feild textarea {
+    border: 1px solid #cccccc;
+    float: left;
+    font-size: 15px;
+    padding: 10px;
+    width: 100%;
+}
+
+.ProfileImg {
+    height: 90px !important;
+    /*width: 90px;*/
+}
+
+.dvPaging {
+    float: left;
+    margin-bottom: 0px;
+    width: 50%;
+    clear: both;
+    margin-left: 0px;
+}
+
+.dvpageSize {
+    float: right;
+    width: 135px;
+    margin-bottom: 20px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.spnPageSize #spnFormulaManagementPageSize {
+    float: left;
+    padding-top: 5px;
+}
+
+.ddlPerPage {
+    float: right;
+    width: 60px;
+    padding-right: 0px;
+    border: 1px solid #ccc;
+}
+
+
+.sortColumn {
+    cursor: pointer;
+}
+
+.sortColumn1 {
+    cursor: pointer;
+}
+
+#closePopup:focus {
+    border: 1px dotted black;
+    outline: 0 none;
+}
+
+#ImgClick {
+    cursor: pointer;
+}
+
+#ulAllUsers li {
+    background: #f7f7f7 none repeat scroll 0 0;
+    border: 1px solid #333333;
+    border-radius: 5px;
+    box-shadow: 5px 5px 5px #e1e1e1;
+    float: left;
+    list-style-type: none;
+    margin: 30px 3% 0 0;
+    max-width: 200px;
+    padding: 0;
+    width: 30%;
+}
+
+.coach-img {
+    border: 3px solid #fff;
+    box-shadow: 5px 5px 2px #eaeaea;
+    display: inline-flex;
+    margin: 16px auto 0;
+    width: 110px;
+}
+
+.content-rt ul li img {
+    margin: 15px 0 0;
+}
+
+.coach-img img {
+    margin: 0 !important;
+    width: 100%;
+}
+
+.coach-img img {
+    height: 109px !important;
+    width: 109px !important;
+}
+
+
+#ulAllUsers {
+    float: left;
+    margin: 0 0 20px;
+    padding: 0;
+    text-align: center;
+    width: 100%;
+}
+
+    #ulAllUsers li h3 {
+        margin: 10px 0;
+    }
+
+#h3Msg {
+    color: #6b6b6b;
+    font-size: 19px;
+    font-weight: unset !important;
+    margin-bottom: 4%;
+    margin-top: 7%;
+    width: 100%;
+}
+
+
+popupwidth {
+    width: 50% !important;
+}
+
+.msg-outer2 .msg2-lt img {
+    float: right;
+    height: 60px;
+    margin-left: 5px;
+}
+
+.msg-outer img {
+    float: left;
+    height: 60px;
+    margin-right: 5px;
+}
+
+
+#popupAddFacts .shadownone {
+    max-width: 766px !important;
+}
+
+#popupAddFacts .upload_cam {
+    margin-right: 24px;
+}
+
+#dvShowImage {
+    filter: progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=image);
+    min-height: 100px;
+    min-width: 100px;
+    margin-left: 80px;
+}
+
+    #dvShowImage img {
+        border: 0;
+        display: block;
+        height: 100px;
+        width: 100px;
+    }
+
+table caption {
+    font-size: 20px;
+    margin-bottom: 10px;
+    text-align: left;
+}
+
+.footer-outer {
+    background: #1a2820;
+    float: left;
+    width: 100%;
+    padding: 0 4%;
+}
+
+.content-grid td a {
+    color: #0D0046;
+    font-size: 13px;
+    text-align: left;
+    margin: 0 5px 5px 5px;
+}
+.content-grid td a:hover {
+    color: #DE354B !important;
+}
+.popupset {
+    max-width: 786px;
+}
+
+    .popupset .input-section {
+        margin: 0 0 10px !important;
+    }

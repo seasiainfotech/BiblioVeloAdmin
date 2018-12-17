@@ -1,0 +1,345 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BiblioveloModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityType Name="tblAccidentalClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="500" />
+    <Property Name="DOB" Type="nvarchar" MaxLength="100" />
+    <Property Name="BookingId" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="DateOfIncident" Type="nvarchar" MaxLength="100" />
+    <Property Name="TimeOfIncident" Type="nvarchar" MaxLength="100" />
+    <Property Name="InCharge" Type="nvarchar" MaxLength="100" />
+    <Property Name="IncidentDescription" Type="nvarchar(max)" />
+    <Property Name="Circumstances" Type="nvarchar(max)" />
+    <Property Name="WitnessDetails" Type="nvarchar(max)" />
+    <Property Name="ThirdPartyDetails" Type="nvarchar(max)" />
+    <Property Name="IsReportedToPolice" Type="bit" />
+    <Property Name="ItemsClaimedFor" Type="nvarchar(max)" />
+    <Property Name="IsAnotherInsurer" Type="bit" />
+    <Property Name="PreviousInsurerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ExpiryDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="PastClaimDetails" Type="nvarchar(max)" />
+    <Property Name="IsAnyCriminalConviction" Type="bit" />
+    <Property Name="IsPolicyCancelled" Type="bit" />
+    <Property Name="IsRefusedRenewal" Type="bit" />
+    <Property Name="ProvidedDetails" Type="nvarchar(max)" />
+    <Property Name="PDFName" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsApproved" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblAdminFee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="InsuranceFor1Day" Type="float" />
+    <Property Name="InsuranceFor2to3Days" Type="float" />
+    <Property Name="InsuranceFor4to6Days" Type="float" />
+    <Property Name="InsuranceFor7to10Days" Type="float" />
+    <Property Name="InsuranceForMoreThan10Days" Type="float" />
+    <Property Name="BookingFeeRenter" Type="float" />
+    <Property Name="BookingFeeOwner" Type="float" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblBooking">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="EquipmentId" Type="bigint" />
+    <Property Name="OwnerId" Type="bigint" />
+    <Property Name="IsVerifiedAccount" Type="bit" />
+    <Property Name="StartDate" Type="datetime" />
+    <Property Name="EndDate" Type="datetime" />
+    <Property Name="IsEvening" Type="bit" />
+    <Property Name="PickUpTime" Type="datetime" />
+    <Property Name="DropTime" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="IsCancel" Type="bit" />
+    <Property Name="CancelReason" Type="nvarchar(max)" />
+    <Property Name="IsConfirmed" Type="bit" />
+    <Property Name="BookingCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsEmailSent" Type="bit" />
+    <Property Name="NoOfDays" Type="int" />
+    <Property Name="TotalPrice" Type="nvarchar" MaxLength="500" />
+    <Property Name="CancelledBy" Type="bigint" />
+    <Property Name="RentalPeriodStartTime" Type="datetime" />
+    <Property Name="RentalPeriodEndTime" Type="datetime" />
+    <Property Name="IsRented" Type="bit" />
+    <Property Name="IsNotificationSent" Type="bit" />
+    <Property Name="IsPickupNotificationSent" Type="bit" />
+    <Property Name="IsBookingEnded" Type="bit" />
+    <Property Name="IsPaymentDone" Type="bit" />
+    <Property Name="ChargeId" Type="nvarchar(max)" />
+    <Property Name="TransferId" Type="nvarchar(max)" />
+    <Property Name="IsRefund" Type="bit" />
+    <Property Name="IsOwnerRaisedDispute" Type="bit" />
+    <Property Name="IsRenterRaisedDispute" Type="bit" />
+    <Property Name="IsTheftClaimRaised" Type="bit" />
+    <Property Name="IsAccidentalClaimRaised" Type="bit" />
+    <Property Name="IsOwnerRated" Type="bit" />
+    <Property Name="IsRenterRated" Type="bit" />
+    <Property Name="RentalFee" Type="nvarchar" MaxLength="50" />
+    <Property Name="BookingFee" Type="nvarchar" MaxLength="50" />
+    <Property Name="Insurance" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastSentNotificationTime" Type="datetime" />
+    <Property Name="IsMailForTheftSent" Type="bit" />
+    <Property Name="IsNotificationForSecuritySent" Type="bit" />
+    <Property Name="IsSecurityAmountPaid" Type="bit" />
+    <Property Name="IsSecurityByPaypal" Type="bit" />
+    <Property Name="SecurityId" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsSecurityCaptureOrRefund" Type="bit" />
+    <Property Name="LastSentReminderAt" Type="datetime" />
+    <Property Name="LastSentNotificationTimeForReturn" Type="datetime" />
+    <Property Name="MessageForOwner" Type="nvarchar(max)" />
+    <Property Name="IsEmailChecklistSent" Type="bit" />
+    <Property Name="IsOwnerEmailSent" Type="bit" />
+    <Property Name="YellowJerseyFee" Type="nvarchar" MaxLength="500" />
+  </EntityType>
+  <EntityType Name="tblDispute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RaisedBy" Type="bigint" />
+    <Property Name="RaisedFor" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="BookingId" Type="bigint" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="IsResolved" Type="bit" />
+  </EntityType>
+  <EntityType Name="tblEquipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="BrandId" Type="int" />
+    <Property Name="UserId" Type="bigint" />
+    <Property Name="Model" Type="nvarchar" MaxLength="100" />
+    <Property Name="Price" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MaxHeight" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="MinHeight" Type="decimal" Precision="18" Scale="0" />
+    <Property Name="Size" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="CreatedBy" Type="bigint" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="ModifiedBy" Type="bigint" />
+    <Property Name="IsActive" Type="bit" />
+    <Property Name="IsBlock" Type="bit" />
+    <Property Name="IsOtherBrand" Type="bit" />
+    <Property Name="OtherBrand" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsVintage" Type="bit" />
+    <Property Name="PurchaseYear" Type="nvarchar" MaxLength="100" />
+    <Property Name="BicyclePurchaseValue" Type="nvarchar" MaxLength="100" />
+    <Property Name="AboutBike" Type="nvarchar(max)" />
+  </EntityType>
+  <EntityType Name="tblImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="EquipmentId" Type="bigint" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="200" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Email" Type="nvarchar" MaxLength="50" />
+    <Property Name="Password" Type="nvarchar" MaxLength="50" />
+  </EntityType>
+  <EntityType Name="tblRating">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RatedBy" Type="bigint" />
+    <Property Name="RatedTo" Type="bigint" />
+    <Property Name="Rating" Type="int" />
+    <Property Name="Review" Type="nvarchar(max)" />
+    <Property Name="BookingId" Type="bigint" />
+    <Property Name="IsOwnerRating" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblReportedReview">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="RatingId" Type="bigint" />
+    <Property Name="Reason" Type="nvarchar(max)" />
+    <Property Name="ReportedBy" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblTheftClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FullName" Type="nvarchar" MaxLength="500" />
+    <Property Name="Email" Type="nvarchar" MaxLength="500" />
+    <Property Name="DOB" Type="nvarchar" MaxLength="100" />
+    <Property Name="BookingId" Type="nvarchar" MaxLength="100" />
+    <Property Name="Address" Type="nvarchar(max)" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="MobileNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="ListOfStolenItems" Type="nvarchar(max)" />
+    <Property Name="ApproxValue" Type="nvarchar" MaxLength="100" />
+    <Property Name="Circumstances" Type="nvarchar(max)" />
+    <Property Name="WhoWasResponsible" Type="nvarchar" MaxLength="100" />
+    <Property Name="HowLongUnattended" Type="nvarchar" MaxLength="100" />
+    <Property Name="TimeAndDateLastSeen" Type="nvarchar" MaxLength="100" />
+    <Property Name="TimeAndDateTheftDiscovered" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsAnyWitness" Type="bit" />
+    <Property Name="WitnessDetails" Type="nvarchar(max)" />
+    <Property Name="PoliceContactNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="CrimeIncidentNumber" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsPoliceAttend" Type="bit" />
+    <Property Name="IsReportedToPoliceImmediately" Type="bit" />
+    <Property Name="ReasonForNotReportedImmediately" Type="nvarchar(max)" />
+    <Property Name="HowBicycleWasSecured" Type="nvarchar(max)" />
+    <Property Name="DetailOfSecuredLock" Type="nvarchar(max)" />
+    <Property Name="HowAccessGained" Type="nvarchar(max)" />
+    <Property Name="AlternativeSecurityMethod" Type="nvarchar(max)" />
+    <Property Name="IsAnotherInsurer" Type="bit" />
+    <Property Name="PreviousInsurerName" Type="nvarchar" MaxLength="100" />
+    <Property Name="ExpiryDate" Type="nvarchar" MaxLength="50" />
+    <Property Name="PastClaimDetails" Type="nvarchar(max)" />
+    <Property Name="IsAnyCriminalConviction" Type="bit" />
+    <Property Name="IsPolicyCancelled" Type="bit" />
+    <Property Name="IsRefusedRenewal" Type="bit" />
+    <Property Name="ProvidedDetails" Type="nvarchar(max)" />
+    <Property Name="PDFName" Type="nvarchar" MaxLength="100" />
+    <Property Name="IsApproved" Type="bit" />
+    <Property Name="CreatedDate" Type="datetime" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="FirstName" Type="nvarchar" MaxLength="50" />
+    <Property Name="LastName" Type="nvarchar" MaxLength="50" />
+    <Property Name="Gender" Type="nvarchar" MaxLength="50" />
+    <Property Name="PhoneNumber" Type="nvarchar" MaxLength="50" />
+    <Property Name="DOB" Type="date" />
+    <Property Name="Address" Type="nvarchar" MaxLength="500" />
+    <Property Name="City" Type="nvarchar" MaxLength="500" />
+    <Property Name="Country" Type="nvarchar" MaxLength="500" />
+    <Property Name="PostCode" Type="nvarchar" MaxLength="100" />
+    <Property Name="Latitude" Type="decimal" Precision="18" Scale="10" />
+    <Property Name="Longitude" Type="decimal" Precision="18" Scale="10" />
+    <Property Name="LoginId" Type="bigint" />
+    <Property Name="CreatedDate" Type="datetime" />
+    <Property Name="ModifiedDate" Type="datetime" />
+    <Property Name="OTP" Type="nvarchar" MaxLength="50" />
+    <Property Name="IsActive" Type="int" />
+    <Property Name="IsDelete" Type="int" />
+    <Property Name="IsExpired" Type="int" />
+    <Property Name="IsVerified" Type="int" />
+    <Property Name="FacebookId" Type="nvarchar" MaxLength="50" />
+    <Property Name="Age" Type="int" />
+    <Property Name="CountryCode" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeemlyId" Type="nvarchar" MaxLength="100" />
+    <Property Name="ImageName" Type="nvarchar" MaxLength="200" />
+    <Property Name="QuickBlox_UserId" Type="nvarchar" MaxLength="200" />
+    <Property Name="AccountId" Type="nvarchar" MaxLength="100" />
+    <Property Name="OnfidoId" Type="nvarchar" MaxLength="100" />
+    <Property Name="CheckId" Type="nvarchar" MaxLength="100" />
+    <Property Name="ReportId" Type="nvarchar" MaxLength="100" />
+    <Property Name="FineAmount" Type="int" />
+    <Property Name="CreditAmount" Type="int" />
+    <Property Name="IsDocumentUploaded" Type="bit" />
+    <Property Name="IsOnfidoVerified" Type="bit" />
+    <Property Name="Count" Type="int" />
+    <Property Name="OnfidoResult" Type="nvarchar" MaxLength="100" />
+    <Property Name="LastOnfidoFailedTime" Type="datetime" />
+    <Property Name="TimeZone" Type="nvarchar" MaxLength="100" />
+    <Property Name="AboutMe" Type="nvarchar(max)" />
+    <Property Name="BankAccountId" Type="nvarchar" MaxLength="200" />
+    <Property Name="BankAccountNo" Type="nvarchar" MaxLength="100" />
+  </EntityType>
+  <EntityType Name="tblUserDeviceMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="DeviceId" Type="nvarchar" MaxLength="50" />
+    <Property Name="DeviceToken" Type="nvarchar" MaxLength="500" />
+    <Property Name="DeviceType" Type="nvarchar" MaxLength="50" />
+    <Property Name="UserId" Type="bigint" />
+  </EntityType>
+  <Association Name="FK__tblDisput__Booki__7C1A6C5A">
+    <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="0..1" />
+    <End Role="tblDispute" Type="Self.tblDispute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tblDispute">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBooking_tblBooking">
+    <End Role="tblBooking" Type="Self.tblBooking" Multiplicity="1" />
+    <End Role="tblBooking1" Type="Self.tblBooking" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tblBooking1">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblImage_tblEquipment">
+    <End Role="tblEquipment" Type="Self.tblEquipment" Multiplicity="0..1" />
+    <End Role="tblImage" Type="Self.tblImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEquipment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblImage">
+        <PropertyRef Name="EquipmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="BiblioveloModelStoreContainer">
+    <EntitySet Name="tblAccidentalClaim" EntityType="Self.tblAccidentalClaim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblAdminFee" EntityType="Self.tblAdminFee" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblBooking" EntityType="Self.tblBooking" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblDispute" EntityType="Self.tblDispute" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblEquipment" EntityType="Self.tblEquipment" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblImage" EntityType="Self.tblImage" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblLogin" EntityType="Self.tblLogin" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblRating" EntityType="Self.tblRating" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblReportedReview" EntityType="Self.tblReportedReview" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblTheftClaim" EntityType="Self.tblTheftClaim" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUser" EntityType="Self.tblUser" Schema="dbo" store:Type="Tables" />
+    <EntitySet Name="tblUserDeviceMapping" EntityType="Self.tblUserDeviceMapping" Schema="dbo" store:Type="Tables" />
+    <AssociationSet Name="FK__tblDisput__Booki__7C1A6C5A" Association="Self.FK__tblDisput__Booki__7C1A6C5A">
+      <End Role="tblBooking" EntitySet="tblBooking" />
+      <End Role="tblDispute" EntitySet="tblDispute" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBooking_tblBooking" Association="Self.FK_tblBooking_tblBooking">
+      <End Role="tblBooking" EntitySet="tblBooking" />
+      <End Role="tblBooking1" EntitySet="tblBooking" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblImage_tblEquipment" Association="Self.FK_tblImage_tblEquipment">
+      <End Role="tblEquipment" EntitySet="tblEquipment" />
+      <End Role="tblImage" EntitySet="tblImage" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

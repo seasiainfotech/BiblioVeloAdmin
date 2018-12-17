@@ -1,0 +1,10 @@
+D:\Projects\BiblioVelo\BiblioVelo.Model\bin\Debug\BiblioVelo.Model.dll
+D:\Projects\BiblioVelo\BiblioVelo.Model\bin\Debug\BiblioVelo.Model.pdb
+D:\Projects\BiblioVelo\BiblioVelo.Model\obj\Debug\BiblioVelo.Model.csprojResolveAssemblyReference.cache
+D:\Projects\BiblioVelo\BiblioVelo.Model\obj\Debug\BiblioVelo.Model.dll
+D:\Projects\BiblioVelo\BiblioVelo.Model\obj\Debug\BiblioVelo.Model.pdb
+\\10.8.11.173\Projects\BiblioVelo\BiblioVelo.Model\bin\Debug\BiblioVelo.Model.dll
+\\10.8.11.173\Projects\BiblioVelo\BiblioVelo.Model\bin\Debug\BiblioVelo.Model.pdb
+\\10.8.11.173\Projects\BiblioVelo\BiblioVelo.Model\obj\Debug\BiblioVelo.Model.csprojResolveAssemblyReference.cache
+\\10.8.11.173\Projects\BiblioVelo\BiblioVelo.Model\obj\Debug\BiblioVelo.Model.dll
+\\10.8.11.173\Projects\BiblioVelo\BiblioVelo.Model\obj\Debug\BiblioVelo.Model.pdb

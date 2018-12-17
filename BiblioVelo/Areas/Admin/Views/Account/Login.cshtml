@@ -1,0 +1,126 @@
+﻿@model BiblioVelo.Areas.Admin.Models.LoginViewModel
+@{
+    Layout = null;
+}
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<link rel="shortcut icon" type="image/png" href="~/Images/favicon.ico" />
+<link href="~/Content/style.css" rel="stylesheet" />
+<link href="~/Content/sweetalert.css" rel="stylesheet" />
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<script src="~/Scripts/sweetalert.min.js"></script>
+<script src="~/Scripts/jquery.cookie.js"></script>
+<title>:::BiblioVelo:::</title>
+<h2>@ViewBag.Title</h2>
+<div class="main-container">
+    <div class="login-page-main">
+        <div class="container">
+            @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form-horizontal", role = "form", @id = "submitForm" }))
+            {
+                @Html.AntiForgeryToken()
+                <div class="logo-section-form">
+                    <div class="form-logo">
+                        <a href="javascript:;"><img src="http://stgsd.appsndevs.com/BiblioVeloApiUAT/logo/AppLogo2.png" alt=""style="width: 331px;"></a>
+                    </div>
+                    <div class="login-inner-outer">
+                        <div class="login-form-inner">
+                            <div class="form-header">
+                                ADMIN LOGIN
+                            </div>
+                            <div class="input-feild-outer">
+                                <div class="input-section">
+                                    @Html.LabelFor(m => m.Email)<span class="spnTestimonial" style="margin:9px 0 0 0;">*</span>
+                                    <div class="input-feild">
+                                        @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" ,@style="margin-left:0px;"})
+                                        @Html.ValidationMessageFor(m => m.Email)
+                                    </div>
+                                </div>
+                                <div class="input-section">
+                                    @Html.LabelFor(m => m.Password)<span class="spnTestimonial" style="margin:9px 0 0 0;">*</span>
+                                    <div class="input-feild">
+                                        @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password", @style = "margin-left:0px;" })
+                                        @Html.ValidationMessageFor(m => m.Password)
+                                    </div>
+                                </div>
+                                <div class="input-section mtop10">
+                                    <div class="remember-me">
+                                        @Html.LabelFor(m => m.RememberMe)
+                                        @Html.CheckBoxFor(m => m.RememberMe, new { @class = "chkRemember" })
+                                    </div>
+                                    <div class="forgot-password">
+                                        <p>Forgot your password ?   <a href="../Account/ForgotPassword">Click Here</a></p>
+                                    </div>
+                                </div>
+                                <div class="input-section">
+                                    <input type="submit" class="login-btn" value="LOGIN" onclick="chkRemember();">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+
+
+    </div>
+</div>
+<script>
+    history.pushState(null, null, 'Login');
+    window.addEventListener('popstate', function (event) {
+        history.pushState(null, null, 'Login');
+    });
+    if ('@ViewBag.Message' == "Error") {
+        swal({
+            title: 'Error',
+            text: 'Invalid email or password',
+            type: 'error'
+        },
+    function () {
+        window.location.href = '@Url.Action("Login", "Account")';
+    });
+    }
+    function chkRemember() {
+        if ($('#RememberMe').prop('checked')) {
+            $.cookie("cookieEmail", $('#Email').val(), { expires: 30 });
+            $.cookie("cookiePassword", $('#Password').val(), { expires: 30 });
+        }
+        else {
+            $.cookie('cookieEmail', null);
+            $.cookie('cookiePassword', null);
+        }
+    }
+
+    if ($.cookie("cookieEmail") != "" && $.cookie("cookiePassword") != "") {
+        if ($.cookie("cookieEmail") != null && $.cookie("cookiePassword") != null) {
+            if ($.cookie("cookieEmail") != "null" && $.cookie("cookiePassword") != "null") {
+                if ($.cookie("cookieEmail") != undefined && $.cookie("cookiePassword") != undefined) {
+                    $('#Email').val($.cookie("cookieEmail"));
+                    $('#Password').val($.cookie("cookiePassword"));
+                    $('#RememberMe').prop('checked', 'checked');
+                }
+                else {
+                    $('#Email').val('');
+                    $('#Password').val('');
+                    $('#RememberMe').prop('checked', false);
+                }
+            }
+            else {
+                $('#Email').val('');
+                $('#Password').val('');
+                $('#RememberMe').prop('checked', false);
+            }
+        }
+        else {
+            $('#Email').val('');
+            $('#Password').val('');
+            $('#RememberMe').prop('checked', false);
+        }
+    }
+    else {
+        $('#Email').val('');
+        $('#Password').val('');
+        $('#RememberMe').prop('checked', false);
+    }
+</script>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -1,0 +1,101 @@
+﻿@model BiblioVelo.Services.Models.BookingModelEntity
+@{
+    ViewBag.Title = "Booking Details";
+}
+<h2 style="width: 80%;">Booking Details</h2>
+
+@*<a href="Admin/Disputes/Index" class="inner-hdr-btn">Back</a>*@
+<input type="submit" value="Back" class="inner-hdr-btn" style="width: 77px;" onclick="window.location.href = '@Url.Action("Index", "Disputes")';" />
+
+<div class="content-grid">
+    @if (Model != null)
+    {
+        if (Model.lstBookings != null)
+        {
+            var grid = new WebGrid(canPage: true, canSort: true, rowsPerPage: ViewBag.PageSize);
+            grid.Pager(WebGridPagerModes.Numeric);
+            grid.Bind(@Model.lstBookings,
+            autoSortAndPage: false,
+            rowCount: @Model.Total);
+            @grid.GetHtml(htmlAttributes: new { id = "tblTestimonial", width = "100%", cellspacing = "0", cellpadding = "0", border = "0" },
+            fillEmptyRows: false,
+            headerStyle: "HeaderColor",
+            tableStyle: "",
+            rowStyle: "",
+            footerStyle: "footerGooter",
+            columns: grid.Columns(
+            grid.Column("RenterName", "Renter"),
+            grid.Column("OwnerName", "Owner"),
+            grid.Column("EquipmentId", "Equipment Id"),
+            grid.Column("RentalPeriodStartTime", "Start"),
+            grid.Column("RentalPeriodEndTime", "End"),
+            grid.Column("Cancel", "Cancelled By"),
+              grid.Column("CancelReason", "Reason for Cancellation"),
+             grid.Column("TotalPrice", "Total Price")))
+        }
+        else
+        {
+            <div class="grid">
+                <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                    <thead>
+                        <tr>
+                            <th>Renter Name</th>
+                            <th>Owner Name</th>
+                            <th>EquipmentId</th>
+                            <th>Start</th>
+                            <th>End</th>
+                            <th>CancelledBy</th>
+                            <th>Reason for Cancellation</th>
+                            <th>Total Price</th>
+                 
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="4" align="center" style="text-align:center;">No record found </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br /><br /><br />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="grid">
+            <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                <thead>
+                    <tr>
+                        <th>Renter Name</th>
+                        <th>Owner Name</th>
+                        <th>EquipmentId</th>
+                        <th>Start</th>
+                        <th>End</th>
+                        <th>CancelledBy</th>
+                        <th>Reason for Cancellation</th>
+                        <th>Total Price</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="4" align="center" style="text-align:center;">No record found </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br /><br /><br /><br />
+        </div>
+    }
+   
+</div>
+
+<script>
+    $('#ulAdminMenu li').removeClass('selected');
+    $("#lstUsers").addClass('selected');
+
+    
+
+  
+</script>
+
+
+

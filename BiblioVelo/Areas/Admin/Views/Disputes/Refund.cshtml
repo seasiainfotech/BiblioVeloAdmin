@@ -1,0 +1,210 @@
+﻿@using BiblioVelo.Services.Models
+@model BiblioVelo.Services.Models.BookingModel
+
+@{
+    ViewBag.Title = "Refund";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>Refund</h2>
+@if (Model.IsPaymentDone != true)
+{
+    <div class="input-feild-outer">
+        <div class="input-section">
+            <label>Message</label>
+            <div class="input-feild">
+                <label>
+                    :  No payment done by renter yet.
+
+                </label>
+            </div>
+        </div>
+    </div>
+    <div>
+        <input type="submit" id="backBtn" value="BACK" class="inner-hdr-btn" style="padding:11px 34px;float:none;" />
+
+    </div>
+
+}
+else
+{
+    using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.OwnerId);
+        @Html.HiddenFor(m => m.UserId);
+
+
+        <div class="input-feild-outer">
+
+            <div class="input-section">
+                @if (Model.IsRefund != false)
+                {
+                    Model.RefundType = "NoRefund";
+                    @Html.LabelFor(m => m.RefundType)
+
+                    <div class="input-feild">
+                        @Html.TextBoxFor(m => Model.RefundType, new { @class = "form-control", @readonly = "readonly", @style = "width: 100 %;" })
+                        <label style="margin:11px;">
+                            Refund is already done for this Booking.
+
+                        </label>
+                    </div>
+                }
+                else
+                {
+                    @Html.LabelFor(m => m.RefundType)
+
+                    <div class="input-feild">
+                        @Html.DropDownListFor(m => m.RefundType,
+ new SelectList(Enum.GetValues(typeof(TypeOfRefund))),
+ htmlAttributes: new { id = "refundTypeID", @style = "padding:5px;margin-left: 19px;", @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.RefundType)
+                    </div>
+                }
+            </div>
+
+            <div class="input-section">
+                @Html.LabelFor(m => Model.BookingId)
+                <div class="input-feild">
+                    @Html.TextBoxFor(m => Model.BookingId, new { @class = "form-control", @readonly = "readonly", @style = "width: 100 %;" })
+
+                </div>
+            </div>
+
+            <div class="input-section">
+                @Html.LabelFor(m => Model.ChargeId)
+                <div class="input-feild">
+                    @Html.TextBoxFor(m => Model.ChargeId, new { @class = "form-control", @readonly = "readonly", @style = "width: 100 %;" })
+
+                </div>
+            </div>
+            <div class="input-section">
+                @Html.LabelFor(m => Model.AmountToOwner)
+                <div class="input-feild">
+                    @Html.TextBoxFor(x => x.AmountToOwner, htmlAttributes: new { @class = "form-control", @style = "width: 100 %;", @placeholder = "Amount in £" })
+                    @Html.ValidationMessageFor(m => m.AmountToOwner)
+                </div>
+            </div>
+
+
+
+            <div class="input-section">
+                <label id="SpecificAmount">Refund to Renter</label>
+                <div class="input-feild">
+                    @Html.TextBoxFor(x => x.SpecificAmount, htmlAttributes: new { id = "specific", @class = "form-control", @style = "padding:5px", @placeholder = "Amount in £" })
+
+                    @Html.ValidationMessageFor(m => m.SpecificAmount)
+
+                </div>
+
+
+            </div>
+            <label id="spc" style="margin:11px; color: #DE354B;">NOTE : Refund to Renter can't be greater than @Model.TotalPrice (Total Booking Price) </label>
+        </div>
+
+
+
+        <div>
+
+            <input type="submit" value="REFUND" class="inner-hdr-btn" style="padding:11px 34px;float:none;" />
+
+        </div>
+    }
+    <input type="submit" id="backButton2" value="BACK" class="inner-hdr-btn" style="padding:11px 34px;float:none;" />
+
+}
+
+
+<script>
+
+    $(function () {
+        debugger;
+        $("#spc").hide();
+        $("#specific").hide();
+        $("#SpecificAmount").hide();
+
+
+        if ($("#refundTypeID").val() == "Specific") {
+            $("#spc").show();
+            $("#specific").show();
+            $("#SpecificAmount").show();
+
+        }
+    });
+
+    $("#refundTypeID").change(function () {
+        if ($(this).val() === "Specific") {
+            $("#spc").show();
+            $("#specific").show();
+            $("#SpecificAmount").show();
+        } else {
+            $("#specific").hide();
+            $("#SpecificAmount").hide();
+            $("#spc").hide();
+        }
+    });
+    if ('@ViewBag.Message' == "SpecificCantBeZero") {
+        swal({
+            title: 'Error',
+            text: 'Refund Amount cant be 0',
+            type: 'error'
+        },
+    function () {
+         window.location.reload;
+    });
+    }
+
+
+    if ('@ViewBag.Message' == "SpecificCantBeGreater") {
+        swal({
+            title: 'Error',
+            text: 'Amount cant be greater than Total booking price',
+            type: 'error'
+        },
+    function () {
+        window.location.reload;
+    });
+    }
+
+
+
+
+    if ('@ViewBag.Message' == "AmountCantBeZero") {
+        swal({
+            title: 'Error',
+            text: 'Credit Amount cant be 0',
+            type: 'error'
+
+        },
+    function () {
+       window.location.reload;
+    });
+    }
+
+    $("#backBtn").click(function () {
+
+        debugger;
+        window.location.href = '@Url.Action("Index", "Disputes")';
+    });
+
+    $("#backButton2").click(function () {
+        debugger;
+        window.location.href ='@Url.Action("Index", "Disputes")';
+    });
+
+    //getParameterByName: function (name, url) {
+    //    if (!url) url = window.location.href;
+    //    name = name.replace(/[\[\]]/g, "\\$&");
+    //    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+    //    results = regex.exec(url);
+    //    if (!results) return null;
+    //    if (!results[2]) return '';
+    //    return decodeURIComponent(results[2].replace(/\+/g, " "));
+    //}
+
+
+
+</script>
+
+
+

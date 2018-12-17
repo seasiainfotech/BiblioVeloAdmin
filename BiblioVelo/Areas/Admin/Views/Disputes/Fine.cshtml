@@ -1,0 +1,84 @@
+﻿@using BiblioVelo.Services.Models
+@model BiblioVelo.Services.Models.BookingModel
+
+@{
+    ViewBag.Title = "Fine";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<h2>Fine</h2>
+ @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+        @Html.HiddenFor(m => m.OwnerId);
+        @Html.HiddenFor(m => m.UserId);
+
+
+        <div class="input-feild-outer">
+           <div class="input-section">
+                @Html.LabelFor(m => Model.BookingId)
+                <div class="input-feild">
+                    @Html.TextBoxFor(m => Model.BookingId, new { @class = "form-control", @readonly = "readonly" })
+                </div>
+            </div>
+
+            <div class="input-section">
+                @Html.LabelFor(m => Model.FineToOwner)
+                <div class="input-feild">
+                    @Html.TextBoxFor(x => x.FineToOwner, htmlAttributes: new { @class = "form-control", @style = "padding:5px", @placeholder = "Amount in £" })
+                    @Html.ValidationMessageFor(m => m.FineToOwner)
+                </div>
+            </div>
+
+
+
+            <div class="input-section">
+                @Html.LabelFor(m => Model.FineToRenter)
+                <div class="input-feild">
+                    @Html.TextBoxFor(x => x.FineToRenter, htmlAttributes: new { @class = "form-control", @style = "padding:5px", @placeholder = "Amount in £" })
+                    @Html.ValidationMessageFor(m => m.FineToRenter)
+                </div>
+            </div>
+
+        </div>
+
+
+
+        <div>
+
+            <input type="submit" value="FINE" class="inner-hdr-btn" style="padding:11px 34px;float:none;" />
+        </div>
+    }
+<input type="submit" id="backBtn" value="BACK" class="inner-hdr-btn" style="padding:11px 34px;float:none;" onclick="window.location.href = '@Url.Action("Index", "Disputes")';" />
+
+
+
+
+
+<script>
+
+    $(function () {
+        $("#specific").hide();
+        $("#SpecificAmount").hide();
+    });
+    if ('@ViewBag.Message' == "FineCantZero") {
+        swal({
+            title: 'Error',
+            text: 'Fine Amount Cant be Zero',
+            type: 'error'
+        },
+    function () {
+        window.location.reload;
+    });
+    }
+    $("#backBtn").click(function () {
+        debugger;
+        window.location.href = '@Url.Action("Index", "Disputes")' + '?' + 'page=' + @ViewBag.CurrentPage+'&'+'PageSize='+@ViewBag.PageSize;
+    });
+  
+
+
+</script>
+
+
+
+

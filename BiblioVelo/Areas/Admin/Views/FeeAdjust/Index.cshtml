@@ -1,0 +1,137 @@
+﻿@model BiblioVelo.Services.Models.FeeAdjustModel
+
+@{
+    ViewBag.Title = "Index";
+}
+<script src="~/Scripts/jquery-1.10.2.min.js"></script>
+<style>
+    input[type="text"], input[type="email"], input[type="password"], input[type="tel"], input[type="search"], select, textarea {
+        margin-left: 248px;
+        margin-top: -30px;
+    }
+
+    .col-md-2 {
+        width: 20.666667%;
+    }
+</style>
+<div class="form-horizontal">
+    <h4>BiblioVélo Admin Fee Details</h4>
+    <hr />
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => Model.BookingFeeRenter, htmlAttributes: new { @class = "control-label col-md-2" })
+
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.BookingFeeRenter, new
+       {
+           @class = "form-control",
+           @readonly = "readonly"@*, @style = "margin-left: 56px;"*@ })
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        @Html.LabelFor(m => Model.BookingFeeOwner, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.BookingFeeOwner, new
+       {
+           @class = "form-control",
+           @readonly = "readonly" @*, @style= "margin-left: 56px;"*@ })
+        </div>
+    </div>
+    <br />
+    <hr />
+    <h4>BiblioVélo Insurance Fee Details</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(m => Model.InsuranceFor1Day, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.InsuranceFor1Day, new
+       {
+           @class = "form-control",
+           @readonly = "readonly"@*, @style = "margin-left: 56px;"*@ })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => Model.InsuranceFor2to3Days, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.InsuranceFor2to3Days, new
+       {
+           @class = "form-control",
+           @readonly = "readonly"@*, @style = "margin-left: 56px;"*@ })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => Model.InsuranceFor4to6Days, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.InsuranceFor4to6Days, new
+       {
+           @class = "form-control",
+           @readonly = "readonly"@*, @style = "margin-left: 56px;"*@ })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => Model.InsuranceFor7to10Days, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.InsuranceFor7to10Days, new
+       {
+           @class = "form-control",
+           @readonly = "readonly"@*, @style = "margin-left: 56px;"*@ })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(m => Model.InsuranceForMoreThan10Days, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.TextBoxFor(m => Model.InsuranceForMoreThan10Days, new
+       {
+           @class = "form-control",
+           @readonly = "readonly"@*, @style = "margin-left: 56px;"*@ })
+        </div>
+    </div>
+
+</div>
+<div style="margin-left: 173px; color:#0D0046;">Last updated on: @Model.ModifiedDate</div>
+<div style="margin-left: 173px;color:#DE354B;font-weight: bold;">Note: All values are in percent except Booking fee to Renter(in £)</div>
+
+<div class="form-group" style="margin-top: 17px;">
+    <div class="col-md-offset-2 col-md-10">
+        <input type="submit" id="editBtn" value="EDIT" class="inner-hdr-btn" style="padding: 11px 41px;float:none;" />
+    </div>
+</div>
+
+
+<script>
+
+
+    $("#editBtn").click(function () {
+        debugger;
+        window.location.href = '@Url.Action("EditFee", "FeeAdjust")';
+    });
+
+    if ('@ViewBag.Message' == "Success") {
+        swal({
+            title: 'Success',
+            text: 'Edited Successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.href = '@Url.Action("Index", "FeeAdjust")';
+    });
+
+    }
+
+    if ('@ViewBag.Message' == "Exception") {
+        swal({
+            title: 'Error',
+            text: 'Something went wrong',
+            type: 'error'
+        },
+    function () {
+        window.location.href = '@Url.Action("Index", "FeeAdjust")';
+    });
+
+    }
+
+</script>

@@ -1,0 +1,152 @@
+﻿@model BiblioVelo.Services.Models.BookingDetailModel
+@{
+    ViewBag.Title = "ManageBooking";
+}
+<h2 style="width: 80%;">Manage Bookings</h2>
+@*@using (Html.BeginForm("ManageUser", "User", FormMethod.Get))
+    {*@
+<div class="filter-left mwidth">
+    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+</div>
+@*}*@
+<div class="content-grid">
+    @if (Model != null)
+    {
+        if (Model.lstBooking != null)
+        {
+            var grid = new WebGrid(canPage: true, canSort: true, rowsPerPage: ViewBag.PageSize);
+            grid.Pager(WebGridPagerModes.Numeric);
+            grid.Bind(@Model.lstBooking,
+                autoSortAndPage: false,
+                rowCount: @Model.Total);
+            @grid.GetHtml(htmlAttributes: new {id = "tblTestimonial", width = "100%", cellspacing = "0", cellpadding = "0", border = "0"},
+                fillEmptyRows: false,
+                headerStyle: "HeaderColor",
+                tableStyle: "",
+                rowStyle: "",
+                footerStyle: "footerGooter",
+                columns: grid.Columns(
+                    grid.Column("BookingId", "Booking Id"),
+                    grid.Column("Owner", "Owner"),
+                    grid.Column("Renter", "Renter"),
+                    grid.Column("PickupTime", "Pick Up"),
+                    grid.Column("DropTime", "Drop Off"),
+                    grid.Column("NoOfDays", "No. Of Days"),
+                    grid.Column("TotalPrice", "Total Cost"),
+                    grid.Column("RentalFee", "Rental Fee"),
+                    grid.Column("BookingFee", "Booking Fee"),
+                    grid.Column("OwnerIncome", "Owner Income"),
+                    grid.Column("YellowJerseyFee", "Fee to Yellow Jersey"),
+                    grid.Column("BiblioveloIncome", "BiblioVélo Income")
+
+                    ))
+        }
+        else
+        {
+            <div class="grid">
+                <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                    <thead>
+                        <tr>
+                            <th>Booking Id</th>
+                            <th>Owner</th>
+                            <th>Renter</th>
+                            <th>Pickup Time</th>
+                            <th>Drop Time</th>
+                            <th>No Of Days</th>
+                            <th>Total Price</th>
+                            <th>Rental Fee</th>
+                            <th>Booking Fee</th>
+                            <th>Owner Income</th>
+                            <th>Fee to Yellow Jersey</th>
+                            <th>BiblioVélo Income</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="12" align="center" style="text-align:center;">No record found </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br /><br /><br />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="grid">
+            <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                <thead>
+                    <tr>
+                        <th>Booking Id</th>
+                        <th>Owner</th>
+                        <th>Renter</th>
+                        <th>Pickup Time</th>
+                        <th>Drop Time</th>
+                        <th>No Of Days</th>
+                        <th>Total Price</th>
+                        <th>Rental Fee</th>
+                        <th>Booking Fee</th>
+                        <th>Fee to Yellow Jersey</th>
+                        <th>BiblioVélo Income</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="12" align="center" style="text-align:center;">No record found </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br /><br /><br /><br />
+        </div>
+    }
+    <div style="padding: 20px 0 0 0;float: right;">
+        <span>Page Size:</span>
+        @Html.DropDownListFor(x => x.PageSize, new List<SelectListItem>
+               {
+                            new SelectListItem() { Text = "5", Value = "5"},
+                            new SelectListItem() { Text = "10", Value = "10"},
+                            new SelectListItem() { Text = "25", Value = "25"},
+                            new SelectListItem() { Text = "50", Value = "50"},
+                            new SelectListItem() { Text = "100", Value = "100"}
+        })
+    </div>
+</div>
+
+<script>
+    $('#ulAdminMenu li').removeClass('selected');
+    $("#lstUsers").addClass('selected');
+
+    $('#PageSize').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("ManageBooking", "Booking")' + '?' + 'PageSize=' + value;
+    });
+
+    $('#SearchString').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("ManageBooking", "Booking")' + '?' + 'SearchString=' + value +'&'+'PageSize='+@ViewBag.PageSize;
+    });
+
+    if ('@ViewBag.Message' == "ActiveSuccess") {
+        swal({
+            title: 'Success',
+            text: 'Your account activated successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.reload;
+    });
+
+    }
+    if ('@ViewBag.Message' == "DeactiveSuccess") {
+        swal({
+            title: 'Success',
+            text: 'Your account deactivated successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.reload;
+    });
+    }
+</script>
+
+

@@ -1,0 +1,162 @@
+﻿@model BiblioVelo.Services.Models.AccidentalClaimModelEntity
+@{
+    ViewBag.Title = "Accidental Claims";
+}
+<h2 style="width: 80%;">Manage Accidental Claims</h2>
+@*@using (Html.BeginForm("Index", "Disputes", FormMethod.Get))
+    {*@
+<div class="filter-left mwidth">
+    @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
+</div>
+@*}*@
+<div class="content-grid">
+    @if (Model != null)
+    {
+        if (Model.lstAccidentalClaims != null)
+        {
+            var grid = new WebGrid(canPage: true, canSort: true, rowsPerPage: ViewBag.PageSize);
+            grid.Pager(WebGridPagerModes.Numeric);
+            grid.Bind(@Model.lstAccidentalClaims,
+            autoSortAndPage: false,
+            rowCount: @Model.Total);
+            @grid.GetHtml(htmlAttributes: new { id = "tblTestimonial", width = "100%", cellspacing = "0", cellpadding = "0", border = "0" },
+            fillEmptyRows: false,
+            headerStyle: "HeaderColor",
+            tableStyle: "",
+            rowStyle: "",
+            footerStyle: "footerGooter",
+            columns: grid.Columns(
+            grid.Column("FullName", "Claimed By"),
+             grid.Column("BookingId", "Booking Id"),
+             grid.Column("Address", "Address"),
+               grid.Column("Email", "Email"),
+                  grid.Column("CreatedDate", "Created Date"),
+             grid.Column(header: "View PDF", format:
+            @<text><a href="@item.PDFName" target="_blank">Click to View</a></text>),
+
+              grid.Column(header: "Action", format: @<text>
+
+                    @Html.ActionLink("Approve", "Approve", new { id = item.Id, pagesize = ViewBag.PageSize, page = ViewBag.CurrentPage }, new { onclick = "return confirm('Are you sure you want to approve this claim?');" })
+
+                    @Html.ActionLink("Reject", "Reject", new { id = item.Id, pagesize = ViewBag.PageSize, page = ViewBag.CurrentPage }, new { onclick = "return confirm('Are you sure you want to reject this claim?');" })
+            </text>)
+
+      ))
+        }
+        else
+        {
+            <div class="grid">
+                <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                    <thead>
+                        <tr>
+                            <th>Claimed By</th>
+                            <th>Booking Id</th>
+                            <th>Address</th>
+                            <th>Email</th>
+                            <th>Created Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td colspan="5" align="center" style="text-align:center;">No record found </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <br /><br /><br /><br />
+            </div>
+        }
+    }
+    else
+    {
+        <div class="grid">
+            <table cellspacing="0" width="100" cellpadding="0" border="0" class="grid">
+                <thead>
+                    <tr>
+                        <th>Claimed By</th>
+                        <th>Booking Id</th>
+                        <th>Address</th>
+                        <th>Email</th>
+                        <th>Created Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td colspan="5" align="center" style="text-align:center;">No record found </td>
+                    </tr>
+                </tbody>
+            </table>
+            <br /><br /><br /><br />
+        </div>
+    }
+
+    <div style="padding: 20px 0 0 0;float: right;">
+        <span>Page Size:</span>
+        @Html.DropDownListFor(x => x.PageSize, new List<SelectListItem>
+               {
+                            new SelectListItem() { Text = "5", Value = "5"},
+                            new SelectListItem() { Text = "10", Value = "10"},
+                            new SelectListItem() { Text = "25", Value = "25"},
+                            new SelectListItem() { Text = "50", Value = "50"},
+                            new SelectListItem() { Text = "100", Value = "100"}
+        })
+    </div>
+</div>
+
+<script>
+    $('#ulAdminMenu li').removeClass('selected');
+    $("#lstUsers").addClass('selected');
+
+    $('#PageSize').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("Index", "ClaimsForAccident")' + '?' + 'PageSize=' + value;
+    });
+
+    $('#SearchString').change(function () {
+        var value = $(this).val();
+        window.location.href = '@Url.Action("Index", "ClaimsForAccident")' + '?' + 'SearchString=' + value +'&'+'PageSize='+@ViewBag.PageSize;
+    });
+
+
+
+
+
+    if ('@ViewBag.Message' == "Deleted") {
+        swal({
+            title: 'Rejected',
+            text: 'Claim Rejected Successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.href = '@Url.Action("Index", "ClaimsForAccident")' + '?' + 'PageSize=' +@ViewBag.PageSize;
+    });
+    }
+
+    if ('@ViewBag.Message' == "Approved") {
+        swal({
+            title: 'Approved',
+            text: 'Claim Approved Successfully',
+            type: 'success'
+        },
+    function () {
+        window.location.href = '@Url.Action("Index", "ClaimsForAccident")' + '?' + 'PageSize=' +@ViewBag.PageSize;
+    });
+    }
+
+
+    if ('@ViewBag.Message' == "Something went wrong") {
+        swal({
+            title: 'Error',
+            text: 'Something went wrong',
+            type: 'error'
+        },
+    function () {
+        window.location.href.href = '@Url.Action("Index", "ClaimsForAccident")' + '?' + 'PageSize=' +@ViewBag.PageSize;
+    });
+    }
+
+
+
+
+</script>
+
+

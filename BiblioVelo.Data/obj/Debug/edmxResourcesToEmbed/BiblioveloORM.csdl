@@ -1,0 +1,351 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="BiblioveloModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="tblEquipment">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="BrandId" Type="Int32" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="Model" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Price" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MaxHeight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="MinHeight" Type="Decimal" Precision="18" Scale="0" />
+    <Property Name="Size" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedBy" Type="Int64" />
+    <Property Name="IsActive" Type="Boolean" />
+    <Property Name="IsBlock" Type="Boolean" />
+    <Property Name="IsOtherBrand" Type="Boolean" />
+    <Property Name="OtherBrand" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsVintage" Type="Boolean" />
+    <Property Name="PurchaseYear" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BicyclePurchaseValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblImages" Relationship="BiblioveloModel.FK_tblImage_tblEquipment" FromRole="tblEquipment" ToRole="tblImage" />
+    <Property Name="AboutBike" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblRating">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RatedBy" Type="Int64" />
+    <Property Name="RatedTo" Type="Int64" />
+    <Property Name="Rating" Type="Int32" />
+    <Property Name="Review" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BookingId" Type="Int64" />
+    <Property Name="IsOwnerRating" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblReportedReview">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RatingId" Type="Int64" />
+    <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ReportedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblUser">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Gender" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PhoneNumber" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="DateTime" Precision="0" />
+    <Property Name="Address" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Latitude" Type="Decimal" Precision="18" Scale="10" />
+    <Property Name="Longitude" Type="Decimal" Precision="18" Scale="10" />
+    <Property Name="LoginId" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <Property Name="OTP" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsActive" Type="Int32" />
+    <Property Name="IsDelete" Type="Int32" />
+    <Property Name="IsExpired" Type="Int32" />
+    <Property Name="IsVerified" Type="Int32" />
+    <Property Name="FacebookId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Age" Type="Int32" />
+    <Property Name="CountryCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeemlyId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ImageName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="QuickBlox_UserId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="AccountId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="OnfidoId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="FineAmount" Type="Int32" />
+    <Property Name="CreditAmount" Type="Int32" />
+    <Property Name="City" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Country" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="PostCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CheckId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ReportId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsDocumentUploaded" Type="Boolean" />
+    <Property Name="IsOnfidoVerified" Type="Boolean" />
+    <Property Name="Count" Type="Int32" />
+    <Property Name="OnfidoResult" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="LastOnfidoFailedTime" Type="DateTime" Precision="3" />
+    <Property Name="TimeZone" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="AboutMe" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="BankAccountId" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="BankAccountNo" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblUserDeviceMapping">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="DeviceId" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceToken" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DeviceType" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="UserId" Type="Int64" />
+  </EntityType>
+  <EntityContainer Name="BiblioveloEntities1" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="tblEquipments" EntityType="Self.tblEquipment" />
+    <EntitySet Name="tblRatings" EntityType="Self.tblRating" />
+    <EntitySet Name="tblReportedReviews" EntityType="Self.tblReportedReview" />
+    <EntitySet Name="tblUsers" EntityType="Self.tblUser" />
+    <EntitySet Name="tblUserDeviceMappings" EntityType="Self.tblUserDeviceMapping" />
+    <EntitySet Name="tblDisputes" EntityType="BiblioveloModel.tblDispute" />
+    <EntitySet Name="tblLogins" EntityType="BiblioveloModel.tblLogin" />
+    <EntitySet Name="tblImages" EntityType="BiblioveloModel.tblImage" />
+    <AssociationSet Name="FK_tblImage_tblEquipment" Association="BiblioveloModel.FK_tblImage_tblEquipment">
+      <End Role="tblEquipment" EntitySet="tblEquipments" />
+      <End Role="tblImage" EntitySet="tblImages" />
+    </AssociationSet>
+    <EntitySet Name="tblAccidentalClaims" EntityType="BiblioveloModel.tblAccidentalClaim" />
+    <EntitySet Name="tblAdminFees" EntityType="BiblioveloModel.tblAdminFee" />
+    <EntitySet Name="tblTheftClaims" EntityType="BiblioveloModel.tblTheftClaim" />
+    <EntitySet Name="tblBookings" EntityType="BiblioveloModel.tblBooking" />
+    <AssociationSet Name="FK__tblDisput__Booki__7C1A6C5A" Association="BiblioveloModel.FK__tblDisput__Booki__7C1A6C5A">
+      <End Role="tblBooking" EntitySet="tblBookings" />
+      <End Role="tblDispute" EntitySet="tblDisputes" />
+    </AssociationSet>
+    <AssociationSet Name="FK_tblBooking_tblBooking" Association="BiblioveloModel.FK_tblBooking_tblBooking">
+      <End Role="tblBooking" EntitySet="tblBookings" />
+      <End Role="tblBooking1" EntitySet="tblBookings" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="tblDispute">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="RaisedBy" Type="Int64" />
+    <Property Name="RaisedFor" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="BookingId" Type="Int64" />
+    <Property Name="Reason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsResolved" Type="Boolean" />
+    <NavigationProperty Name="tblBooking" Relationship="BiblioveloModel.FK__tblDisput__Booki__7C1A6C5A" FromRole="tblDispute" ToRole="tblBooking" />
+  </EntityType>
+  <EntityType Name="tblLogin">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="tblImage">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="EquipmentId" Type="Int64" />
+    <Property Name="ImageName" Type="String" MaxLength="200" FixedLength="false" Unicode="true" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+    <NavigationProperty Name="tblEquipment" Relationship="BiblioveloModel.FK_tblImage_tblEquipment" FromRole="tblImage" ToRole="tblEquipment" />
+  </EntityType>
+  <Association Name="FK_tblImage_tblEquipment">
+    <End Type="BiblioveloModel.tblEquipment" Role="tblEquipment" Multiplicity="0..1" />
+    <End Type="BiblioveloModel.tblImage" Role="tblImage" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblEquipment">
+        <PropertyRef Name="Id" />
+      </Principal>
+      <Dependent Role="tblImage">
+        <PropertyRef Name="EquipmentId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="tblAccidentalClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BookingId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PostCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="DateOfIncident" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TimeOfIncident" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="InCharge" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IncidentDescription" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="Circumstances" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WitnessDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ThirdPartyDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsReportedToPolice" Type="Boolean" />
+    <Property Name="ItemsClaimedFor" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnotherInsurer" Type="Boolean" />
+    <Property Name="PreviousInsurerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ExpiryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PastClaimDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnyCriminalConviction" Type="Boolean" />
+    <Property Name="IsPolicyCancelled" Type="Boolean" />
+    <Property Name="IsRefusedRenewal" Type="Boolean" />
+    <Property Name="ProvidedDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PDFName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblAdminFee">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="InsuranceFor1Day" Type="Double" />
+    <Property Name="InsuranceFor2to3Days" Type="Double" />
+    <Property Name="InsuranceFor4to6Days" Type="Double" />
+    <Property Name="InsuranceFor7to10Days" Type="Double" />
+    <Property Name="InsuranceForMoreThan10Days" Type="Double" />
+    <Property Name="BookingFeeRenter" Type="Double" />
+    <Property Name="BookingFeeOwner" Type="Double" />
+    <Property Name="ModifiedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblTheftClaim">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FullName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="Email" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="DOB" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="BookingId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PostCode" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="MobileNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ListOfStolenItems" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="ApproxValue" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="Circumstances" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="WhoWasResponsible" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="HowLongUnattended" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TimeAndDateLastSeen" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="TimeAndDateTheftDiscovered" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnyWitness" Type="Boolean" />
+    <Property Name="WitnessDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PoliceContactNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="CrimeIncidentNumber" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsPoliceAttend" Type="Boolean" />
+    <Property Name="IsReportedToPoliceImmediately" Type="Boolean" />
+    <Property Name="ReasonForNotReportedImmediately" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HowBicycleWasSecured" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="DetailOfSecuredLock" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="HowAccessGained" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="AlternativeSecurityMethod" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnotherInsurer" Type="Boolean" />
+    <Property Name="PreviousInsurerName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="ExpiryDate" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="PastClaimDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsAnyCriminalConviction" Type="Boolean" />
+    <Property Name="IsPolicyCancelled" Type="Boolean" />
+    <Property Name="IsRefusedRenewal" Type="Boolean" />
+    <Property Name="ProvidedDetails" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="PDFName" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsApproved" Type="Boolean" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+  </EntityType>
+  <EntityType Name="tblBooking">
+    <Key>
+      <PropertyRef Name="BookingId" />
+    </Key>
+    <Property Name="BookingId" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="UserId" Type="Int64" />
+    <Property Name="EquipmentId" Type="Int64" />
+    <Property Name="OwnerId" Type="Int64" />
+    <Property Name="IsVerifiedAccount" Type="Boolean" />
+    <Property Name="StartDate" Type="DateTime" Precision="3" />
+    <Property Name="EndDate" Type="DateTime" Precision="3" />
+    <Property Name="IsEvening" Type="Boolean" />
+    <Property Name="PickUpTime" Type="DateTime" Precision="3" />
+    <Property Name="DropTime" Type="DateTime" Precision="3" />
+    <Property Name="CreatedBy" Type="Int64" />
+    <Property Name="CreatedDate" Type="DateTime" Precision="3" />
+    <Property Name="IsCancel" Type="Boolean" />
+    <Property Name="CancelReason" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsConfirmed" Type="Boolean" />
+    <Property Name="BookingCode" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="IsEmailSent" Type="Boolean" />
+    <Property Name="NoOfDays" Type="Int32" />
+    <Property Name="TotalPrice" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <Property Name="CancelledBy" Type="Int64" />
+    <Property Name="RentalPeriodStartTime" Type="DateTime" Precision="3" />
+    <Property Name="RentalPeriodEndTime" Type="DateTime" Precision="3" />
+    <Property Name="IsRented" Type="Boolean" />
+    <Property Name="IsNotificationSent" Type="Boolean" />
+    <Property Name="IsPickupNotificationSent" Type="Boolean" />
+    <Property Name="IsBookingEnded" Type="Boolean" />
+    <Property Name="IsPaymentDone" Type="Boolean" />
+    <Property Name="ChargeId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="TransferId" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsRefund" Type="Boolean" />
+    <Property Name="IsOwnerRaisedDispute" Type="Boolean" />
+    <Property Name="IsRenterRaisedDispute" Type="Boolean" />
+    <Property Name="IsTheftClaimRaised" Type="Boolean" />
+    <Property Name="IsAccidentalClaimRaised" Type="Boolean" />
+    <Property Name="IsOwnerRated" Type="Boolean" />
+    <Property Name="IsRenterRated" Type="Boolean" />
+    <Property Name="RentalFee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="BookingFee" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="Insurance" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="LastSentNotificationTime" Type="DateTime" Precision="3" />
+    <Property Name="IsMailForTheftSent" Type="Boolean" />
+    <Property Name="IsNotificationForSecuritySent" Type="Boolean" />
+    <Property Name="IsSecurityAmountPaid" Type="Boolean" />
+    <Property Name="IsSecurityByPaypal" Type="Boolean" />
+    <Property Name="SecurityId" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <Property Name="IsSecurityCaptureOrRefund" Type="Boolean" />
+    <Property Name="LastSentReminderAt" Type="DateTime" Precision="3" />
+    <Property Name="LastSentNotificationTimeForReturn" Type="DateTime" Precision="3" />
+    <Property Name="MessageForOwner" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+    <Property Name="IsEmailChecklistSent" Type="Boolean" />
+    <Property Name="IsOwnerEmailSent" Type="Boolean" />
+    <Property Name="YellowJerseyFee" Type="String" MaxLength="500" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="tblDisputes" Relationship="BiblioveloModel.FK__tblDisput__Booki__7C1A6C5A" FromRole="tblBooking" ToRole="tblDispute" />
+    <NavigationProperty Name="tblBooking1" Relationship="BiblioveloModel.FK_tblBooking_tblBooking" FromRole="tblBooking" ToRole="tblBooking1" />
+    <NavigationProperty Name="tblBooking2" Relationship="BiblioveloModel.FK_tblBooking_tblBooking" FromRole="tblBooking1" ToRole="tblBooking" />
+  </EntityType>
+  <Association Name="FK__tblDisput__Booki__7C1A6C5A">
+    <End Type="BiblioveloModel.tblBooking" Role="tblBooking" Multiplicity="0..1" />
+    <End Type="BiblioveloModel.tblDispute" Role="tblDispute" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="tblBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tblDispute">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK_tblBooking_tblBooking">
+    <End Type="BiblioveloModel.tblBooking" Role="tblBooking" Multiplicity="1" />
+    <End Type="BiblioveloModel.tblBooking" Role="tblBooking1" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="tblBooking">
+        <PropertyRef Name="BookingId" />
+      </Principal>
+      <Dependent Role="tblBooking1">
+        <PropertyRef Name="BookingId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

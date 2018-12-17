@@ -1,0 +1,123 @@
+﻿@model BiblioVelo.Areas.Admin.Models.RegisterViewModel
+@{
+    ViewBag.Title = "Register";
+    Layout = null;
+}
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="shortcut icon" type="image/png" href="~/Images/favicon.ico" />
+    <link href="~/Content/style.css" rel="stylesheet" />
+    <title>:::BiblioVelo:::</title>
+</head>
+<body>
+    <div class="main-container">
+        <div class="login-page-main">
+            <div class="container">
+                <div class="logo-section-form">
+                    <div class="form-logo">
+                        <a href="javascript:;"><img src="~/Images/biblioLogo.png" alt=""></a>
+                    </div>
+                    <div class="login-inner-outer">
+                        @using (Html.BeginForm("Register", "Account", FormMethod.Post, new { @class = "form-horizontal", role = "form" }))
+                        {
+                            @Html.AntiForgeryToken()
+                            <div class="signup-form-inner">
+                                <div class="form-header">
+                                    SIGNUP
+                                </div>
+                                <div class="signup-feild-outer">
+
+                                    <ul>
+                                        <li>
+                                            <div class="input-section listing-form">
+                                                @Html.LabelFor(m => m.Email, new { @class = "control-label" })
+                                                <div class="input-feild">
+                                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control", @placeholder = "Email" })
+                                                    @Html.ValidationMessageFor(m => m.Email)
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="input-section listing-form">
+                                                @Html.LabelFor(m => m.Password, new { @class = "control-label" })
+                                                <div class="input-feild">
+                                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                                                    @Html.ValidationMessageFor(m => m.Password)
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="input-section listing-form">
+                                                @Html.LabelFor(m => m.ConfirmPassword, new { @class = "control-label" })
+                                                <div class="input-feild">
+                                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control", @placeholder = "Confirm Password" })
+                                                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="input-section listing-form">
+                                                @Html.LabelFor(m => m.PhoneNumber, new { @class = "control-label" })
+                                                <div class="input-feild">
+                                                    @Html.TextBoxFor(m => m.PhoneNumber, new { @class = "form-control", @placeholder = "Phone Number" })
+                                                    @Html.ValidationMessageFor(m => m.PhoneNumber)
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="input-section listing-form">
+                                                @Html.LabelFor(m => m.Country, new { @class = "control-label" })
+                                                <div class="input-feild">
+                                                    @Html.TextBoxFor(m => m.Country, new { @class = "form-control", @placeholder = "Country" })
+                                                    @Html.ValidationMessageFor(m => m.Country)
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="input-section listing-form">
+                                                @Html.LabelFor(m => m.State, new { @class = "control-label" })
+                                                <div class="input-feild">
+                                                    @Html.TextBoxFor(m => m.State, new { @class = "form-control", @placeholder = "State" })
+                                                    @Html.ValidationMessageFor(m => m.State)
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="input-section listing-form">
+                                                @Html.LabelFor(m => m.City, new { @class = "control-label" })
+                                                <div class="input-feild">
+                                                    @Html.TextBoxFor(m => m.City, new { @class = "form-control", @placeholder = "City" })
+                                                    @Html.ValidationMessageFor(m => m.City)
+                                                </div>
+                                            </div>
+                                        </li>
+                                        <li>
+                                            <div class="input-section listing-form">
+                                                @Html.LabelFor(m => m.Zip, new { @class = "control-label" })
+                                                <div class="input-feild">
+                                                    @Html.TextBoxFor(m => m.Zip, new { @class = "form-control", @placeholder = "Zip" })
+                                                    @Html.ValidationMessageFor(m => m.Zip)
+                                                </div>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+                                <div class="input-section mtop20">
+                                    <input type="submit" class="login-btn" value="SIGNUP">
+                                </div>
+                            </div>
+                        }
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+
+

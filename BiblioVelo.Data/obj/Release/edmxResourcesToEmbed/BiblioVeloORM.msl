@@ -1,0 +1,297 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="BiblioveloModelStoreContainer" CdmEntityContainer="BiblioveloEntities1">
+    <EntitySetMapping Name="tblEquipments">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblEquipment">
+        <MappingFragment StoreEntitySet="tblEquipment">
+          <ScalarProperty Name="AboutBike" ColumnName="AboutBike" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="BrandId" ColumnName="BrandId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="Price" ColumnName="Price" />
+          <ScalarProperty Name="MaxHeight" ColumnName="MaxHeight" />
+          <ScalarProperty Name="MinHeight" ColumnName="MinHeight" />
+          <ScalarProperty Name="Size" ColumnName="Size" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="ModifiedBy" ColumnName="ModifiedBy" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsBlock" ColumnName="IsBlock" />
+          <ScalarProperty Name="IsOtherBrand" ColumnName="IsOtherBrand" />
+          <ScalarProperty Name="OtherBrand" ColumnName="OtherBrand" />
+          <ScalarProperty Name="IsVintage" ColumnName="IsVintage" />
+          <ScalarProperty Name="PurchaseYear" ColumnName="PurchaseYear" />
+          <ScalarProperty Name="BicyclePurchaseValue" ColumnName="BicyclePurchaseValue" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblRatings">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblRating">
+        <MappingFragment StoreEntitySet="tblRating">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RatedBy" ColumnName="RatedBy" />
+          <ScalarProperty Name="RatedTo" ColumnName="RatedTo" />
+          <ScalarProperty Name="Rating" ColumnName="Rating" />
+          <ScalarProperty Name="Review" ColumnName="Review" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="IsOwnerRating" ColumnName="IsOwnerRating" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblReportedReviews">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblReportedReview">
+        <MappingFragment StoreEntitySet="tblReportedReview">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="RatingId" ColumnName="RatingId" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="ReportedBy" ColumnName="ReportedBy" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUsers">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblUser">
+        <MappingFragment StoreEntitySet="tblUser">
+          <ScalarProperty Name="BankAccountNo" ColumnName="BankAccountNo" />
+          <ScalarProperty Name="BankAccountId" ColumnName="BankAccountId" />
+          <ScalarProperty Name="AboutMe" ColumnName="AboutMe" />
+          <ScalarProperty Name="TimeZone" ColumnName="TimeZone" />
+          <ScalarProperty Name="LastOnfidoFailedTime" ColumnName="LastOnfidoFailedTime" />
+          <ScalarProperty Name="OnfidoResult" ColumnName="OnfidoResult" />
+          <ScalarProperty Name="Count" ColumnName="Count" />
+          <ScalarProperty Name="IsOnfidoVerified" ColumnName="IsOnfidoVerified" />
+          <ScalarProperty Name="IsDocumentUploaded" ColumnName="IsDocumentUploaded" />
+          <ScalarProperty Name="ReportId" ColumnName="ReportId" />
+          <ScalarProperty Name="CheckId" ColumnName="CheckId" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Country" ColumnName="Country" />
+          <ScalarProperty Name="City" ColumnName="City" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="FirstName" ColumnName="FirstName" />
+          <ScalarProperty Name="LastName" ColumnName="LastName" />
+          <ScalarProperty Name="Gender" ColumnName="Gender" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="Latitude" ColumnName="Latitude" />
+          <ScalarProperty Name="Longitude" ColumnName="Longitude" />
+          <ScalarProperty Name="LoginId" ColumnName="LoginId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="OTP" ColumnName="OTP" />
+          <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+          <ScalarProperty Name="IsDelete" ColumnName="IsDelete" />
+          <ScalarProperty Name="IsExpired" ColumnName="IsExpired" />
+          <ScalarProperty Name="IsVerified" ColumnName="IsVerified" />
+          <ScalarProperty Name="FacebookId" ColumnName="FacebookId" />
+          <ScalarProperty Name="Age" ColumnName="Age" />
+          <ScalarProperty Name="CountryCode" ColumnName="CountryCode" />
+          <ScalarProperty Name="DeemlyId" ColumnName="DeemlyId" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="QuickBlox_UserId" ColumnName="QuickBlox_UserId" />
+          <ScalarProperty Name="AccountId" ColumnName="AccountId" />
+          <ScalarProperty Name="OnfidoId" ColumnName="OnfidoId" />
+          <ScalarProperty Name="FineAmount" ColumnName="FineAmount" />
+          <ScalarProperty Name="CreditAmount" ColumnName="CreditAmount" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblUserDeviceMappings">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblUserDeviceMapping">
+        <MappingFragment StoreEntitySet="tblUserDeviceMapping">
+          <ScalarProperty Name="Id" ColumnName="Id" />
+          <ScalarProperty Name="DeviceId" ColumnName="DeviceId" />
+          <ScalarProperty Name="DeviceToken" ColumnName="DeviceToken" />
+          <ScalarProperty Name="DeviceType" ColumnName="DeviceType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblDisputes">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblDispute">
+        <MappingFragment StoreEntitySet="tblDispute">
+          <ScalarProperty Name="IsResolved" ColumnName="IsResolved" />
+          <ScalarProperty Name="Reason" ColumnName="Reason" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="RaisedFor" ColumnName="RaisedFor" />
+          <ScalarProperty Name="RaisedBy" ColumnName="RaisedBy" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblLogins">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblLogin">
+        <MappingFragment StoreEntitySet="tblLogin">
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblImages">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblImage">
+        <MappingFragment StoreEntitySet="tblImage">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="ImageName" ColumnName="ImageName" />
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAccidentalClaims">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblAccidentalClaim">
+        <MappingFragment StoreEntitySet="tblAccidentalClaim">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="PDFName" ColumnName="PDFName" />
+          <ScalarProperty Name="ProvidedDetails" ColumnName="ProvidedDetails" />
+          <ScalarProperty Name="IsRefusedRenewal" ColumnName="IsRefusedRenewal" />
+          <ScalarProperty Name="IsPolicyCancelled" ColumnName="IsPolicyCancelled" />
+          <ScalarProperty Name="IsAnyCriminalConviction" ColumnName="IsAnyCriminalConviction" />
+          <ScalarProperty Name="PastClaimDetails" ColumnName="PastClaimDetails" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="PreviousInsurerName" ColumnName="PreviousInsurerName" />
+          <ScalarProperty Name="IsAnotherInsurer" ColumnName="IsAnotherInsurer" />
+          <ScalarProperty Name="ItemsClaimedFor" ColumnName="ItemsClaimedFor" />
+          <ScalarProperty Name="IsReportedToPolice" ColumnName="IsReportedToPolice" />
+          <ScalarProperty Name="ThirdPartyDetails" ColumnName="ThirdPartyDetails" />
+          <ScalarProperty Name="WitnessDetails" ColumnName="WitnessDetails" />
+          <ScalarProperty Name="Circumstances" ColumnName="Circumstances" />
+          <ScalarProperty Name="IncidentDescription" ColumnName="IncidentDescription" />
+          <ScalarProperty Name="InCharge" ColumnName="InCharge" />
+          <ScalarProperty Name="TimeOfIncident" ColumnName="TimeOfIncident" />
+          <ScalarProperty Name="DateOfIncident" ColumnName="DateOfIncident" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblAdminFees">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblAdminFee">
+        <MappingFragment StoreEntitySet="tblAdminFee">
+          <ScalarProperty Name="ModifiedDate" ColumnName="ModifiedDate" />
+          <ScalarProperty Name="BookingFeeOwner" ColumnName="BookingFeeOwner" />
+          <ScalarProperty Name="BookingFeeRenter" ColumnName="BookingFeeRenter" />
+          <ScalarProperty Name="InsuranceForMoreThan10Days" ColumnName="InsuranceForMoreThan10Days" />
+          <ScalarProperty Name="InsuranceFor7to10Days" ColumnName="InsuranceFor7to10Days" />
+          <ScalarProperty Name="InsuranceFor4to6Days" ColumnName="InsuranceFor4to6Days" />
+          <ScalarProperty Name="InsuranceFor2to3Days" ColumnName="InsuranceFor2to3Days" />
+          <ScalarProperty Name="InsuranceFor1Day" ColumnName="InsuranceFor1Day" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblTheftClaims">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblTheftClaim">
+        <MappingFragment StoreEntitySet="tblTheftClaim">
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="IsApproved" ColumnName="IsApproved" />
+          <ScalarProperty Name="PDFName" ColumnName="PDFName" />
+          <ScalarProperty Name="ProvidedDetails" ColumnName="ProvidedDetails" />
+          <ScalarProperty Name="IsRefusedRenewal" ColumnName="IsRefusedRenewal" />
+          <ScalarProperty Name="IsPolicyCancelled" ColumnName="IsPolicyCancelled" />
+          <ScalarProperty Name="IsAnyCriminalConviction" ColumnName="IsAnyCriminalConviction" />
+          <ScalarProperty Name="PastClaimDetails" ColumnName="PastClaimDetails" />
+          <ScalarProperty Name="ExpiryDate" ColumnName="ExpiryDate" />
+          <ScalarProperty Name="PreviousInsurerName" ColumnName="PreviousInsurerName" />
+          <ScalarProperty Name="IsAnotherInsurer" ColumnName="IsAnotherInsurer" />
+          <ScalarProperty Name="AlternativeSecurityMethod" ColumnName="AlternativeSecurityMethod" />
+          <ScalarProperty Name="HowAccessGained" ColumnName="HowAccessGained" />
+          <ScalarProperty Name="DetailOfSecuredLock" ColumnName="DetailOfSecuredLock" />
+          <ScalarProperty Name="HowBicycleWasSecured" ColumnName="HowBicycleWasSecured" />
+          <ScalarProperty Name="ReasonForNotReportedImmediately" ColumnName="ReasonForNotReportedImmediately" />
+          <ScalarProperty Name="IsReportedToPoliceImmediately" ColumnName="IsReportedToPoliceImmediately" />
+          <ScalarProperty Name="IsPoliceAttend" ColumnName="IsPoliceAttend" />
+          <ScalarProperty Name="CrimeIncidentNumber" ColumnName="CrimeIncidentNumber" />
+          <ScalarProperty Name="PoliceContactNumber" ColumnName="PoliceContactNumber" />
+          <ScalarProperty Name="WitnessDetails" ColumnName="WitnessDetails" />
+          <ScalarProperty Name="IsAnyWitness" ColumnName="IsAnyWitness" />
+          <ScalarProperty Name="TimeAndDateTheftDiscovered" ColumnName="TimeAndDateTheftDiscovered" />
+          <ScalarProperty Name="TimeAndDateLastSeen" ColumnName="TimeAndDateLastSeen" />
+          <ScalarProperty Name="HowLongUnattended" ColumnName="HowLongUnattended" />
+          <ScalarProperty Name="WhoWasResponsible" ColumnName="WhoWasResponsible" />
+          <ScalarProperty Name="Circumstances" ColumnName="Circumstances" />
+          <ScalarProperty Name="ApproxValue" ColumnName="ApproxValue" />
+          <ScalarProperty Name="ListOfStolenItems" ColumnName="ListOfStolenItems" />
+          <ScalarProperty Name="MobileNumber" ColumnName="MobileNumber" />
+          <ScalarProperty Name="PostCode" ColumnName="PostCode" />
+          <ScalarProperty Name="Address" ColumnName="Address" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+          <ScalarProperty Name="DOB" ColumnName="DOB" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="FullName" ColumnName="FullName" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tblBookings">
+      <EntityTypeMapping TypeName="BiblioveloModel.tblBooking">
+        <MappingFragment StoreEntitySet="tblBooking">
+          <ScalarProperty Name="YellowJerseyFee" ColumnName="YellowJerseyFee" />
+          <ScalarProperty Name="IsOwnerEmailSent" ColumnName="IsOwnerEmailSent" />
+          <ScalarProperty Name="IsEmailChecklistSent" ColumnName="IsEmailChecklistSent" />
+          <ScalarProperty Name="MessageForOwner" ColumnName="MessageForOwner" />
+          <ScalarProperty Name="LastSentNotificationTimeForReturn" ColumnName="LastSentNotificationTimeForReturn" />
+          <ScalarProperty Name="LastSentReminderAt" ColumnName="LastSentReminderAt" />
+          <ScalarProperty Name="IsSecurityCaptureOrRefund" ColumnName="IsSecurityCaptureOrRefund" />
+          <ScalarProperty Name="SecurityId" ColumnName="SecurityId" />
+          <ScalarProperty Name="IsSecurityByPaypal" ColumnName="IsSecurityByPaypal" />
+          <ScalarProperty Name="IsSecurityAmountPaid" ColumnName="IsSecurityAmountPaid" />
+          <ScalarProperty Name="IsNotificationForSecuritySent" ColumnName="IsNotificationForSecuritySent" />
+          <ScalarProperty Name="IsMailForTheftSent" ColumnName="IsMailForTheftSent" />
+          <ScalarProperty Name="LastSentNotificationTime" ColumnName="LastSentNotificationTime" />
+          <ScalarProperty Name="Insurance" ColumnName="Insurance" />
+          <ScalarProperty Name="BookingFee" ColumnName="BookingFee" />
+          <ScalarProperty Name="RentalFee" ColumnName="RentalFee" />
+          <ScalarProperty Name="IsRenterRated" ColumnName="IsRenterRated" />
+          <ScalarProperty Name="IsOwnerRated" ColumnName="IsOwnerRated" />
+          <ScalarProperty Name="IsAccidentalClaimRaised" ColumnName="IsAccidentalClaimRaised" />
+          <ScalarProperty Name="IsTheftClaimRaised" ColumnName="IsTheftClaimRaised" />
+          <ScalarProperty Name="IsRenterRaisedDispute" ColumnName="IsRenterRaisedDispute" />
+          <ScalarProperty Name="IsOwnerRaisedDispute" ColumnName="IsOwnerRaisedDispute" />
+          <ScalarProperty Name="IsRefund" ColumnName="IsRefund" />
+          <ScalarProperty Name="TransferId" ColumnName="TransferId" />
+          <ScalarProperty Name="ChargeId" ColumnName="ChargeId" />
+          <ScalarProperty Name="IsPaymentDone" ColumnName="IsPaymentDone" />
+          <ScalarProperty Name="IsBookingEnded" ColumnName="IsBookingEnded" />
+          <ScalarProperty Name="IsPickupNotificationSent" ColumnName="IsPickupNotificationSent" />
+          <ScalarProperty Name="IsNotificationSent" ColumnName="IsNotificationSent" />
+          <ScalarProperty Name="IsRented" ColumnName="IsRented" />
+          <ScalarProperty Name="RentalPeriodEndTime" ColumnName="RentalPeriodEndTime" />
+          <ScalarProperty Name="RentalPeriodStartTime" ColumnName="RentalPeriodStartTime" />
+          <ScalarProperty Name="CancelledBy" ColumnName="CancelledBy" />
+          <ScalarProperty Name="TotalPrice" ColumnName="TotalPrice" />
+          <ScalarProperty Name="NoOfDays" ColumnName="NoOfDays" />
+          <ScalarProperty Name="IsEmailSent" ColumnName="IsEmailSent" />
+          <ScalarProperty Name="BookingCode" ColumnName="BookingCode" />
+          <ScalarProperty Name="IsConfirmed" ColumnName="IsConfirmed" />
+          <ScalarProperty Name="CancelReason" ColumnName="CancelReason" />
+          <ScalarProperty Name="IsCancel" ColumnName="IsCancel" />
+          <ScalarProperty Name="CreatedDate" ColumnName="CreatedDate" />
+          <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+          <ScalarProperty Name="DropTime" ColumnName="DropTime" />
+          <ScalarProperty Name="PickUpTime" ColumnName="PickUpTime" />
+          <ScalarProperty Name="IsEvening" ColumnName="IsEvening" />
+          <ScalarProperty Name="EndDate" ColumnName="EndDate" />
+          <ScalarProperty Name="StartDate" ColumnName="StartDate" />
+          <ScalarProperty Name="IsVerifiedAccount" ColumnName="IsVerifiedAccount" />
+          <ScalarProperty Name="OwnerId" ColumnName="OwnerId" />
+          <ScalarProperty Name="EquipmentId" ColumnName="EquipmentId" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="BookingId" ColumnName="BookingId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

@@ -1,0 +1,40 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.23107.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiblioVelo", "BiblioVelo\BiblioVelo.csproj", "{C6B352DF-A4EA-418F-B85B-A26075919C96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiblioVelo.Data", "BiblioVelo.Data\BiblioVelo.Data.csproj", "{1DD65A19-CB15-472E-9DE0-0BFBF89FA8ED}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiblioVelo.Services", "BiblioVelo.Services\BiblioVelo.Services.csproj", "{892B9203-632B-4FFD-98BA-16DC58F2A934}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BiblioVelo.BusinessLogic", "BiblioVelo.BusinessLogic\BiblioVelo.BusinessLogic.csproj", "{F5220F76-E4F7-488A-B6D2-ECF9EBA5F07E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C6B352DF-A4EA-418F-B85B-A26075919C96}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C6B352DF-A4EA-418F-B85B-A26075919C96}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C6B352DF-A4EA-418F-B85B-A26075919C96}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C6B352DF-A4EA-418F-B85B-A26075919C96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1DD65A19-CB15-472E-9DE0-0BFBF89FA8ED}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1DD65A19-CB15-472E-9DE0-0BFBF89FA8ED}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1DD65A19-CB15-472E-9DE0-0BFBF89FA8ED}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1DD65A19-CB15-472E-9DE0-0BFBF89FA8ED}.Release|Any CPU.Build.0 = Release|Any CPU
+		{892B9203-632B-4FFD-98BA-16DC58F2A934}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{892B9203-632B-4FFD-98BA-16DC58F2A934}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{892B9203-632B-4FFD-98BA-16DC58F2A934}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{892B9203-632B-4FFD-98BA-16DC58F2A934}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F5220F76-E4F7-488A-B6D2-ECF9EBA5F07E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F5220F76-E4F7-488A-B6D2-ECF9EBA5F07E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F5220F76-E4F7-488A-B6D2-ECF9EBA5F07E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F5220F76-E4F7-488A-B6D2-ECF9EBA5F07E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

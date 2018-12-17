@@ -1,0 +1,446 @@
+﻿@model BiblioVelo.Services.Models.AccidentalClaimModel
+
+@{
+    Layout = null;
+}
+
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no, maximum-scale=1.0, user-scalable=no">
+
+    <title>Accidental Claim Form</title>
+    <!-- STYLESHEET FILE -->
+    <link href="~/css/style.css" type="text/css" rel="stylesheet" />
+    <link href="~/font/stylesheet.css" type="text/css" rel="stylesheet" />
+    <link rel="stylesheet" type="text/css" media="all" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/sweetalert.min.js"></script>
+    <script src="~/Scripts/jquery.paginate.js"></script>
+</head>
+<body>
+    <div id="wrapper">
+        <!-- Main-wrapper Start -->
+        <div class="banner banner2" style="background: #0D114C;">
+            <!-- banner2 Start -->
+            <div class="nav-outer" style="background: #0D114C;">
+                <div class="container">
+                    <div class="nav-bar">
+                        <div class="logo" style="background: #0D114C;">
+                            <img src="~/img/logo.png" alt="logo" title="logo" />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div><!-- banner2 End -->
+
+        <div class="top-heading">
+            <!--top-heading start-->
+            <div class="container">
+                <h3>Accident Claims Form</h3>
+                <p>
+                    We cannot commence dealing with a claim until we are in receipt of ALL the necessary documentation.
+                </p>
+            </div>
+        </div><!--top-heading End-->
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+            <div class="form-otr">
+                <!--form-otr start-->
+                <div class="container">
+                    <h4>about you</h4>
+                    <h5>Fields marked with an * are required</h5>
+                    <div class="form-inner">
+                        <!--form-inner start-->
+                        <div class="form-row">
+                            <div class="form-left">
+                                <label class="text-heading">Full Name including title *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.FullName, new { htmlAttributes = new { @class = "input-box", @style = "text-transform: capitalize;", @placeholder = "Enter Full Name" } })
+                                @Html.ValidationMessageFor(model => model.FullName, "", new { @class = "text-danger", @style = "color:red; " })
+                            </div>
+                            <div class="form-left form-right">
+                                <label class="text-heading">Email *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "input-box", @placeholder = "Enter Email Id" } })
+                                @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-left">
+                                <label class="text-heading">Date Of Birth *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.DOB, new { htmlAttributes = new { @class = "input-box", @placeholder = "mm/dd/yyyy" } })
+                                @Html.ValidationMessageFor(model => model.DOB, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                            <div class="form-left form-right">
+                                <label class="text-heading">Booking Ref *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.BookingId, new { htmlAttributes = new { @class = "input-box", @placeholder = "Enter Booking Id" } })
+                                @Html.ValidationMessageFor(model => model.BookingId, "", new { @id = "bookingID", @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-left form-full-width">
+                                <label class="text-heading">Address *</label>
+                                @*<textarea class="txt-full-width"></textarea>*@
+                                @Html.TextAreaFor(model => model.Address, new { @class = "txt-full-width", @placeholder = "Enter Address" })
+                                @Html.ValidationMessageFor(model => model.Address, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+
+
+
+                        <div class="form-row">
+                            <div class="form-left">
+                                <label class="text-heading">Postcode *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.PostCode, new { htmlAttributes = new { @class = "input-box", @placeholder = "Enter Postcode" } })
+                                @Html.ValidationMessageFor(model => model.PostCode, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                            <div class="form-left form-right">
+                                <label class="text-heading">Mobile Number *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.MobileNumber, new { htmlAttributes = new { @class = "input-box", @placeholder = "Enter Mobile Number" } })
+                                @Html.ValidationMessageFor(model => model.MobileNumber, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+
+            <div class="form-otr">
+                <!--form-otr start-->
+                <div class="container">
+                    <h4>Incident details</h4>
+                    <!--<h5>Fields marked with an * are required</h5>-->
+                    <div class="form-inner">
+                        <!--form-inner start-->
+                        <div class="form-row form-row2">
+                            <div class="form-left form-left2">
+                                <label class="text-heading">Date of Incident *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.DateOfIncident, new { htmlAttributes = new { @class = "input-box", @placeholder = "mm/dd/yyyy" } })
+                                @Html.ValidationMessageFor(model => model.DateOfIncident, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+
+                            <div class="form-left form-left2 form-left3">
+                                <label class="text-heading">Time of Incident *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.TimeOfIncident, new { htmlAttributes = new { @class = "input-box", @placeholder = "hh:mm" } })
+                                @Html.ValidationMessageFor(model => model.TimeOfIncident, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                            <div class="form-left form-left2 form-right">
+                                <label class="text-heading">Who Was In Charge of Bicycle *</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.InCharge, new { htmlAttributes = new { @class = "input-box", @placeholder = "For eg: Name of The Person" } })
+                                @Html.ValidationMessageFor(model => model.InCharge, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-left form-full-width">
+                                <label class="text-heading">Please describe where the incident took place *</label>
+                                @*<textarea class="txt-full-width"></textarea>*@
+                                @Html.TextAreaFor(model => model.IncidentDescription, new { @class = "txt-full-width", @placeholder = "For eg: Name of The Place" })
+                                @Html.ValidationMessageFor(model => model.IncidentDescription, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+
+
+            <div class="form-otr">
+                <!--form-otr start-->
+                <div class="container">
+                    <h4>CIRCUMSTANCES</h4>
+                    <!--<h5>Fields marked with an * are required</h5>-->
+                    <div class="form-inner">
+                        <!--form-inner start-->
+                        <div class="form-row">
+                            <div class="form-left form-full-width">
+                                <label class="text-heading">Please describe in as much detail as possible the circumstances in which the incident occurred *</label>
+                                @*<textarea class="txt-full-width"></textarea>*@
+                                @Html.TextAreaFor(model => model.Circumstances, new { @class = "txt-full-width", @placeholder = "Enter Circumstances" })
+                                @Html.ValidationMessageFor(model => model.Circumstances, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+
+            <div class="form-otr">
+                <!--form-otr start-->
+                <div class="container">
+                    <h4>WITNESSES</h4>
+                    <!--<h5>Fields marked with an * are required</h5>-->
+                    <div class="form-inner">
+                        <!--form-inner start-->
+                        <div class="form-row">
+                            <div class="form-left form-full-width">
+                                <label class="text-heading">If relevant please supply the name, address and telephone number of any witnesses to the incident</label>
+                                @*<textarea class="txt-full-width"></textarea>*@
+                                @Html.TextAreaFor(model => model.WitnessDetails, new { @class = "txt-full-width", @placeholder = "Enter Witnesses Details" })
+                                @Html.ValidationMessageFor(model => model.WitnessDetails, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+
+            <div class="form-otr">
+                <!--form-otr start-->
+                <div class="container">
+                    <h4>THIRD PARTY DETAILS</h4>
+                    <!--<h5>Fields marked with an * are required</h5>-->
+                    <div class="form-inner">
+                        <!--form-inner start-->
+                        <div class="form-row">
+                            <div class="form-left form-full-width">
+                                <label class="text-heading">If relevant, please supply the name address and telephone number of any third party involved in the incident (e.g. the driver of a car who hit you)</label>
+                                @*<textarea class="txt-full-width"></textarea>*@
+                                @Html.TextAreaFor(model => model.ThirdPartyDetails, new { @class = "txt-full-width", @placeholder = "Enter The Details of Third Party" })
+                                @Html.ValidationMessageFor(model => model.ThirdPartyDetails, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-left">
+                                <p class="radio-btn-heading">Was the incident reported to the police? * </p>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @Html.RadioButtonFor(model => model.IsReportedToPolice, "true") Yes
+
+
+                                        @*<input name="gender" value="male" type="radio">Yes*@
+                                    </label>
+                                </span>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @*<input name="gender" value="female" type="radio">No*@
+                                        @Html.RadioButtonFor(model => model.IsReportedToPolice, "false") No
+                                        @Html.ValidationMessageFor(model => model.IsReportedToPolice, "", new { @class = "text-danger", @style = "color:red;" })
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+
+            <div class="form-otr">
+                <!--form-otr start-->
+                <div class="container">
+                    <h4>ITEMS CLAIMED FOR</h4>
+                    <!--<h5>Fields marked with an * are required</h5>-->
+                    <div class="form-inner">
+                        <!--form-inner start-->
+                        <div class="form-row">
+                            <div class="form-left form-full-width">
+                                <label class="text-heading">If you know which components of your bike are damaged or need replacing, list them here along with an indication of their replacement value</label>
+                                @*<textarea class="txt-full-width"></textarea>*@
+                                @Html.TextAreaFor(model => model.ItemsClaimedFor, new { @class = "txt-full-width", @placeholder = "Enter List of Items" })
+                                @Html.ValidationMessageFor(model => model.ItemsClaimedFor, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+
+            <div class="form-otr">
+                <!--form-otr start-->
+                <div class="container">
+                    <h4>ADDITIONAL INFORMATION</h4>
+                    <div class="form-inner form-inner2b">
+                        <!--form-inner start-->
+
+                        <div class="form-row">
+                            <div class="form-left">
+                                <p class="radio-btn-heading">Have you ever insured your bicycles with another insurer? * </p>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @Html.RadioButtonFor(model => model.IsAnotherInsurer, "true") Yes
+
+
+                                        @*<input name="gender" value="male" type="radio">Yes*@
+                                    </label>
+                                </span>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @*<input name="gender" value="female" type="radio">No*@
+                                        @Html.RadioButtonFor(model => model.IsAnotherInsurer, "false") No
+                                        @Html.ValidationMessageFor(model => model.IsAnotherInsurer, "", new { @class = "text-danger", @style = "color:red;" })
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-left">
+                                <label class="text-heading">Previous Insurer Name</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.PreviousInsurerName, new { htmlAttributes = new { @class = "input-box", @placeholder = "Enter Previous Insurer Name" } })
+                                @Html.ValidationMessageFor(model => model.PreviousInsurerName, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                            <div class="form-left form-right">
+                                <label class="text-heading">Expiry Date</label>
+                                @*<input class="input-box" type="text" value="">*@
+                                @Html.EditorFor(model => model.ExpiryDate, new { htmlAttributes = new { @class = "input-box", @placeholder = "mm/dd/yyyy" } })
+                                @Html.ValidationMessageFor(model => model.ExpiryDate, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+
+
+                        <div class="form-row">
+                            <div class="form-left form-full-width">
+                                <label class="text-heading">Please provide details of any bicycle or cycling related claims made in the past three years</label>
+                                @*<textarea class="txt-full-width"></textarea>*@
+                                @Html.TextAreaFor(model => model.PastClaimDetails, new { @class = "txt-full-width", @placeholder = "Enter Details of Cycle Related Claims" })
+                                @Html.ValidationMessageFor(model => model.PastClaimDetails, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+
+            <div class="form-otr form-otr2">
+                <!--form-otr start-->
+                <div class="container">
+                    <div class="form-inner form-inner2a">
+                        <!--form-inner start-->
+
+                        <div class="form-row">
+                            <div class="form-left">
+                                <p class="radio-btn-heading">Do you have any criminal convictions which you are required to disclose? *</p>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @Html.RadioButtonFor(model => model.IsAnyCriminalConviction, "true") Yes
+
+
+                                        @*<input name="gender" value="male" type="radio">Yes*@
+                                    </label>
+                                </span>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @*<input name="gender" value="female" type="radio">No*@
+                                        @Html.RadioButtonFor(model => model.IsAnyCriminalConviction, "false") No
+                                        @Html.ValidationMessageFor(model => model.IsAnyCriminalConviction, "", new { @class = "text-danger", @style = "color:red;" })
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-left">
+                                <p class="radio-btn-heading">Have you ever had a policy cancelled or void by an insurer? * </p>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @Html.RadioButtonFor(model => model.IsPolicyCancelled, "true") Yes
+
+
+                                        @*<input name="gender" value="male" type="radio">Yes*@
+                                    </label>
+                                </span>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @*<input name="gender" value="female" type="radio">No*@
+                                        @Html.RadioButtonFor(model => model.IsPolicyCancelled, "false") No
+                                        @Html.ValidationMessageFor(model => model.IsPolicyCancelled, "", new { @class = "text-danger", @style = "color:red;" })
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-left">
+                                <p class="radio-btn-heading">Have you ever been refused renewal or had special terms imposed? * </p>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @Html.RadioButtonFor(model => model.IsRefusedRenewal, "true") Yes
+
+
+                                        @*<input name="gender" value="male" type="radio">Yes*@
+                                    </label>
+                                </span>
+                                <span class="form-otr2">
+                                    <label class="text-heading">
+                                        @*<input name="gender" value="female" type="radio">No*@
+                                        @Html.RadioButtonFor(model => model.IsRefusedRenewal, "false") No
+                                        @Html.ValidationMessageFor(model => model.IsRefusedRenewal, "", new { @class = "text-danger", @style = "color:red;" })
+                                    </label>
+                                </span>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="form-left form-full-width">
+                                <label class="text-heading">If you answered yes to any of the above questions, please provide details here</label>
+                                @*<textarea class="txt-full-width"></textarea>*@
+                                @Html.TextAreaFor(model => model.ProvidedDetails, new { @class = "txt-full-width", @placeholder = "Enter Details" })
+                                @Html.ValidationMessageFor(model => model.ProvidedDetails, "", new { @class = "text-danger", @style = "color:red;" })
+                            </div>
+                        </div>
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+
+
+            <div class="form-otr">
+                <!--form-otr start-->
+                <div class="container">
+                    <h4>DECLARATION</h4>
+                    <div class="form-inner form-inner3a">
+                        <!--form-inner start-->
+
+                        <div class="form-row">
+                            <p class="declation-text">
+                                I declare that the information contained in this form is true to the best of my knowledge and I have not withheld any information connected with this claim. I accept that if I exaggerate any part of this claim, or make any false declaration or statement, I shall not be entitled to receive any benefit under this policy in respect of this claim. Furthermore, I accept that any such action on my part may render me liable to prosecution. I further agree to provide any further information or documentation as may be reasonably required. I understand that you may seek information from other insurers to check answers that I have provided. By returning this form electrically via the BiblioVélo website in the absence of a signature constitutes acceptance of the declaration.
+                                <br>
+                                <br>
+
+                                IMPORTANT NOTICE: Insurers and their agents share information with each other to prevent fraudulent claims and for underwriting purposes via the Claims Underwriting Exchange register operated by Insurance Datatype Services Ltd. A list of participants is available upon request. The information you supply on this form, together with the information you have supplied on your insurance and any other information related to the claim, will be supplied to participants.
+                            </p>
+                        </div>
+                        <div class="form-row form-row2a">
+                            <h4 class="btm-text">Please tick the box to show you have read and agreed to the above declaration</h4>
+                            <span class="botm-checkbox"><label>@Html.EditorFor(model => model.IsAgreed)@*<input type="checkbox" value="0">*@ Yes</label>@Html.ValidationMessageFor(model => model.IsAgreed, "", new { @class = "text-danger", @style = "margin-left: 19px;color:red;" })</span>
+
+                            <input type="submit" value="Send" />
+                        </div>
+
+
+
+
+
+                    </div><!--form-inner end-->
+                </div>
+            </div><!--form-otr end-->
+        }
+        <div class="footer">
+            <!-- footer start-->
+            <div class="container">
+                <p>© 2019 Bibliovélo. All Rights Reserved</p>
+            </div>
+        </div><!-- footer End-->
+    </div><!-- Main-wrapper End-->
+
+
+
+
+    <script type='text/javascript' src='http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js'></script>
+
+
+
+</body>
+</html>
